@@ -1,5 +1,7 @@
 'use client';
+
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import React from 'react';
 
 const teamData = [
@@ -24,7 +26,7 @@ const teamData = [
         koreanText:
             '우리는 심도 있는 자기 성찰을 통해 ‘나다움’을 찾아갑니다. ‘나는 누구인가?’라는 근원적 질문을 넘어 ‘i am who i am.’이라는 각자의 답을 찾아갑니다. 각자가 얻은 지혜를 나누며 더 나은 세상을 만들기 위해 노력합니다.',
         englishText:
-            'We look for “me-like” through deep self-reflection. Go beyond the fundamental question of “Who am I?” and look for your own answer, “I am who am.” We will try to share the wisdom we have gained and create a better world.',
+            'We look for &ldquo;me-like&rdquo; through deep self-reflection. Go beyond the fundamental question of &ldquo;Who am I?&rdquo; and look for your own answer, &ldquo;I am who am.&rdquo; We will try to share the wisdom we have gained and create a better world.',
         imageUrl: 'https://images.unsplash.com/photo-1525183995014-BD94c0750cd5?w=1200&q=80',
     },
 ];
@@ -32,8 +34,17 @@ const teamData = [
 // 팀 섹션 컴포넌트
 const TeamSection = ({ title, koreanText, englishText, imageUrl }: (typeof teamData)[0]) => (
     <div className="w-full flex flex-col items-center py-12 md:py-16">
-        <img src={imageUrl} alt={title} className="w-full object-cover rounded-lg" />
-        <div className="text-center max-w-2xl mx-auto mt-8">
+        <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden">
+            <Image
+                src={imageUrl}
+                alt={title}
+                fill
+                className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority={true}
+            />
+        </div>
+        <div className="text-center max-w-2xl mx-auto mt-8 px-4">
             <h3 className="text-xl font-serif italic text-gray-800">{title}</h3>
             <p className="mt-4 text-sm text-gray-600 leading-relaxed">{koreanText}</p>
             <p className="mt-4 text-sm text-gray-500 leading-relaxed font-serif italic">{englishText}</p>
@@ -41,7 +52,6 @@ const TeamSection = ({ title, koreanText, englishText, imageUrl }: (typeof teamD
     </div>
 );
 
-// 메인 페이지 컴포넌트
 const TeamsPage: NextPage = () => {
     return (
         <div className="bg-white text-gray-800 min-h-screen">
@@ -53,39 +63,6 @@ const TeamsPage: NextPage = () => {
                             <TeamSection key={team.title} {...team} />
                         ))}
                     </div>
-
-                    {/* Page Footer */}
-                    <footer className="w-full pt-16 pb-8 mt-16 border-t border-gray-200">
-                        <div className="text-xs text-gray-400">
-                            <div className="flex space-x-4">
-                                <a href="#" className="hover:text-black">
-                                    이메일 무단수집 거부
-                                </a>
-                                <a href="#" className="hover:text-black">
-                                    개인정보 이용 약관
-                                </a>
-                            </div>
-                            <div className="mt-3 space-y-1">
-                                <p>사업자번호 : 102-80-03659</p>
-                                <p>주소 : 노원구 동일로 1029 6F | 문의 : iamcreatorss@gmail.com</p>
-                                <p className="mt-2">© I AM Creators' team All Rights Reserved.</p>
-                            </div>
-                        </div>
-                        <nav className="flex justify-end space-x-6 text-sm text-gray-500 -mt-8">
-                            <a href="#" className="hover:text-black">
-                                About
-                            </a>
-                            <a href="#" className="hover:text-black">
-                                Teams
-                            </a>
-                            <a href="#" className="hover:text-black">
-                                Project
-                            </a>
-                            <a href="#" className="hover:text-black">
-                                Contact
-                            </a>
-                        </nav>
-                    </footer>
                 </div>
             </div>
         </div>

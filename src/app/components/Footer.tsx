@@ -41,7 +41,7 @@ export default function Footer() {
                 </div>
 
                 <div className="text-[#777777] font-medium text-[16px] leading-[20px] mt-1 sm:flex sm:flex-col sm:items-center">
-                    © I AM Creators' team All Rights Reserved.
+                    © I AM Creators team All Rights Reserved.
                 </div>
             </div>
 

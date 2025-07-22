@@ -1,12 +1,29 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 
 const compositionItems = [
-    { kor: '학습', eng: 'learning', img: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80' },
-    { kor: '교류', eng: 'interaction', img: 'https://images.unsplash.com/photo-1520052204349-5236a68f4834?w=800&q=80' },
-    { kor: '체험', eng: 'experience', img: 'https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=800&q=80' },
-    { kor: '코칭', eng: 'coaching', img: 'https://images.unsplash.com/photo-1503522129995-b2a6375836a5?w=800&q=80' },
+    {
+        kor: '학습',
+        eng: 'learning',
+        img: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80',
+    },
+    {
+        kor: '교류',
+        eng: 'interaction',
+        img: 'https://images.unsplash.com/photo-1520052204349-5236a68f4834?w=800&q=80',
+    },
+    {
+        kor: '체험',
+        eng: 'experience',
+        img: 'https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=800&q=80',
+    },
+    {
+        kor: '코칭',
+        eng: 'coaching',
+        img: 'https://images.unsplash.com/photo-1503522129995-b2a6375836a5?w=800&q=80',
+    },
 ];
 
 const stepItems = [
@@ -46,16 +63,16 @@ export default function WhoIAmPage() {
         <div className="w-full mx-auto px-6 md:px-10">
             {/* 4. Video + Steps & Schedule */}
             <section className="bg-gray-50/90 my-16 py-20 px-6 md:px-16 rounded-lg shadow-md  mx-auto">
-                {/* Video with thumbnail toggle */}
                 <div className="mb-14 w-full mx-auto">
                     {showThumbnail ? (
-                        <img
+                        <Image
                             src="/assets/WhoIAM-IntroductionImg.png"
                             alt="Who I AM Introduction Thumbnail"
-                            className="w-full cursor-pointer rounded-lg shadow-lg"
+                            width={1280}
+                            height={720}
+                            className="w-full cursor-pointer rounded-lg shadow-lg object-cover"
                             onClick={handleThumbnailClick}
-                            loading="lazy"
-                            style={{ aspectRatio: '16 / 9', objectFit: 'cover' }}
+                            style={{ aspectRatio: '16 / 9' }}
                         />
                     ) : (
                         <video
@@ -74,7 +91,6 @@ export default function WhoIAmPage() {
                     )}
                 </div>
 
-                {/* Steps */}
                 <div className="space-y-10 max-w-4xl mx-auto">
                     {stepItems.map((item) => (
                         <div key={item.step} className="text-center">
@@ -85,7 +101,6 @@ export default function WhoIAmPage() {
                     ))}
                 </div>
 
-                {/* Schedule */}
                 <div className="mt-20 max-w-4xl mx-auto text-left border-t border-gray-300 pt-12">
                     <h2 className="text-2xl font-serif italic text-gray-800 text-center mb-4">Program Schedule</h2>
                     <p className="text-center text-sm text-gray-500 mb-6">프로그램 일정표</p>
@@ -111,11 +126,11 @@ export default function WhoIAmPage() {
 
             {/* 2. About Who I AM */}
             <section className="text-center py-16 max-w-3xl mx-auto">
-                <h2 className="text-2xl font-serif italic text-gray-800">About `Who I AM`</h2>
+                <h2 className="text-2xl font-serif italic text-gray-800">About &lsquo;Who I AM&rsquo;</h2>
                 <p className="mt-4 text-base text-gray-600 leading-relaxed px-4">
-                    I AM Creator 양성 과정 'Who I AM'은 진짜 나를 발견하고 성장할 수 있도록 돕는 프로그램입니다. 인류의
-                    고전인 바이블을 기반으로 한 탄탄한 학습과 함께 전문적인 코치들의 코칭, 다양한 참여형 프로그램으로
-                    구성되어 있습니다.
+                    I AM Creator 양성 과정 &lsquo;Who I AM&rsquo;은 진짜 나를 발견하고 성장할 수 있도록 돕는
+                    프로그램입니다. 인류의 고전인 바이블을 기반으로 한 탄탄한 학습과 함께 전문적인 코치들의 코칭, 다양한
+                    참여형 프로그램으로 구성되어 있습니다.
                 </p>
             </section>
 
@@ -129,7 +144,13 @@ export default function WhoIAmPage() {
                             key={item.eng}
                             className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
                         >
-                            <img src={item.img} alt={item.kor} className="w-full h-64 object-cover" loading="lazy" />
+                            <Image
+                                src={item.img}
+                                alt={item.kor}
+                                width={800}
+                                height={256}
+                                className="w-full h-64 object-cover"
+                            />
                             <p className="mt-4 text-lg font-semibold">{item.kor}</p>
                             <p className="text-sm text-gray-400 font-serif italic">{item.eng}</p>
                         </div>
