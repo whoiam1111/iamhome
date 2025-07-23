@@ -1,10 +1,9 @@
-// app/lecture/[id]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
-// --- 인터페이스 정의 ---
 interface EventDetail {
     uid: string;
     title: string;
@@ -12,14 +11,13 @@ interface EventDetail {
     image_urls: string[];
     speaker: string[];
     manager: string;
-    // ... 기타 필요한 필드들
 }
 
-// --- 메인 컴포넌트 ---
 export default function LectureDetailPage() {
     const params = useParams();
     const id = params?.id;
     const [event, setEvent] = useState<EventDetail | null>(null);
+    const [events, setEvents] = useState<EventDetail[] | null>(null);
     const [activeTab, setActiveTab] = useState('클래스 소개');
     const tabs = ['클래스 소개', '커리큘럼', '크리에이터', '리뷰'];
 
@@ -32,9 +30,15 @@ export default function LectureDetailPage() {
                 const res = await fetch(
                     `https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events/${eventId}`
                 );
+                const res2 = await fetch(
+                    'https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events?homepage=불난데부채질&limit=100'
+                );
                 if (!res.ok) throw new Error('Failed to fetch event data');
+                if (!res2.ok) throw new Error('Failed to fetch event data');
                 const data = await res.json();
+                const datas = await res2.json();
                 setEvent(data);
+                setEvents(datas.items);
             } catch (error) {
                 console.error(error);
                 setEvent(null);
@@ -44,6 +48,7 @@ export default function LectureDetailPage() {
         fetchEvent();
     }, [id]);
 
+    console.log(events, '?eve');
     if (!event) {
         return <div className="text-center py-20 font-semibold">불러오는 중...</div>;
     }
@@ -56,9 +61,7 @@ export default function LectureDetailPage() {
                 <p className="text-sm text-blue-500 font-semibold mb-6">History Who I am</p>
 
                 <div className="relative flex flex-col md:flex-row gap-8 lg:gap-12">
-                    {/* --- 왼쪽 고정 사이드바 (Sticky Sidebar) --- */}
                     <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-24 h-full self-start">
-                        {/* 이 section이 왼쪽에 고정되어 스크롤을 따라옵니다. */}
                         <section className="bg-gray-50 rounded-lg p-6">
                             <span className="bg-black text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 inline-block">
                                 강연
@@ -70,9 +73,7 @@ export default function LectureDetailPage() {
                         </section>
                     </aside>
 
-                    {/* --- 오른쪽 스크롤 가능 콘텐츠 --- */}
                     <div className="md:w-2/3 lg:w-3/4 flex flex-col gap-16">
-                        {/* 이미지 캐러셀 */}
                         <section>
                             <div className="flex items-center justify-center gap-2">
                                 <button className="p-6 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"></button>
@@ -89,14 +90,27 @@ export default function LectureDetailPage() {
                             </div>
                         </section>
 
-                        {/* 다른 클래스 & 탭 메뉴 */}
                         <section>
                             <h2 className="text-xl font-bold mb-5">other class</h2>
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-                                <div className="h-32 bg-blue-50 rounded-lg"></div>
-                                <div className="h-32 bg-blue-50 rounded-lg"></div>
-                                <div className="h-32 bg-blue-50 rounded-lg"></div>
-                                <div className="h-32 bg-blue-50 rounded-lg"></div>
+                                {events
+                                    ?.filter((e) => e.uid !== event.uid)
+                                    .slice(0, 4)
+                                    .map((e: EventDetail) => (
+                                        <Link key={e.uid} href={`/project/history/${e.uid}`}>
+                                            <div className="h-32 bg-blue-50 rounded-lg overflow-hidden relative cursor-pointer hover:opacity-80 transition">
+                                                <img
+                                                    src={e.image_urls?.[0] || '/placeholder.jpg'}
+                                                    alt={e.title}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                        </Link>
+                                    ))}
+
+                                {events && events.filter((e) => e.uid !== event.uid).length === 0 && (
+                                    <p className="text-gray-500 text-sm col-span-4">다른 클래스가 없습니다.</p>
+                                )}
                             </div>
 
                             <div className="border-b border-gray-200">
@@ -123,14 +137,13 @@ export default function LectureDetailPage() {
                                         {event.description || '클래스 소개 내용이 여기에 표시됩니다.'}
                                     </p>
                                 )}
+                                {activeTab === '커리큘럼' && <ProgramCurriculumSection />}
+                                {activeTab === '크리에이터' && <CreatorSection creators={creators} />}
+                                {activeTab === '리뷰' && (
+                                    <p className="text-gray-500 italic">아직 등록된 리뷰가 없습니다.</p>
+                                )}
                             </div>
                         </section>
-
-                        {/* 프로그램 커리큘럼 */}
-                        <ProgramCurriculumSection />
-
-                        {/* 크리에이터 정보 */}
-                        <CreatorSection creators={creators} />
                     </div>
                 </div>
             </main>
@@ -138,7 +151,6 @@ export default function LectureDetailPage() {
     );
 }
 
-// --- 하위 컴포넌트들 (변경 없음) ---
 const ProgramCurriculumSection = () => (
     <section>
         <div className="flex items-center mb-8">
@@ -153,7 +165,7 @@ const ProgramCurriculumSection = () => (
                 <h3 className="font-bold">기초 학습과 코칭</h3>
                 <p className="text-sm text-blue-500 font-semibold">2개월</p>
             </div>
-            <div className="text-blue-500 text-3xl font-light transform md:rotate-0 rotate-90 my-2 md:my-0"></div>
+            <div className="text-blue-500 text-3xl font-light transform md:rotate-0 rotate-90 my-2 md:my-0">→</div>
             <div className="flex flex-col items-center text-center">
                 <div className="w-36 h-36 flex items-center justify-center bg-blue-500 text-white rounded-full font-bold text-xl mb-4">
                     STEP 2
@@ -161,7 +173,7 @@ const ProgramCurriculumSection = () => (
                 <h3 className="font-bold">핵심 학습과 코칭</h3>
                 <p className="text-sm text-blue-500 font-semibold">2개월</p>
             </div>
-            <div className="text-blue-500 text-3xl font-light transform md:rotate-0 rotate-90 my-2 md:my-0"></div>
+            <div className="text-blue-500 text-3xl font-light transform md:rotate-0 rotate-90 my-2 md:my-0">→</div>
             <div className="flex flex-col items-center text-center">
                 <div className="w-36 h-36 flex items-center justify-center bg-blue-500 text-white rounded-full font-bold text-xl mb-4">
                     STEP 3
@@ -172,6 +184,7 @@ const ProgramCurriculumSection = () => (
         </div>
     </section>
 );
+
 const CreatorSection = ({ creators }: { creators: string[] }) => (
     <section>
         <div className="flex items-center mb-6">
