@@ -97,7 +97,7 @@ export default function LectureDetailPage() {
                                     ?.filter((e) => e.uid !== event.uid)
                                     .slice(0, 4)
                                     .map((e: EventDetail) => (
-                                        <Link key={e.uid} href={`/project/history/${e.uid}`}>
+                                        <Link key={e.uid} href={`/project/contents/${e.uid}`}>
                                             <div className="h-32 bg-blue-50 rounded-lg overflow-hidden relative cursor-pointer hover:opacity-80 transition">
                                                 <img
                                                     src={e.image_urls?.[0] || '/placeholder.jpg'}

@@ -40,14 +40,8 @@ const ClassDetailPage: NextPage = () => {
                     <a href="#" className="hover:text-black">
                         WhoIam
                     </a>
-                    <a href="#" className="hover:text-black">
-                        Media
-                    </a>
-                    <a href="#" className="hover:text-black">
-                        Answering
-                    </a>
                     <a href="#" className="font-bold text-black">
-                        History
+                        Contents
                     </a>
                 </nav>
             </header>

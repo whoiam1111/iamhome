@@ -5,9 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 const project_menu = [
     { key: 'whoiam', title: 'WhoIam', url: '/whoiam' },
-    { key: 'media', title: 'Media', url: '/media' },
-    { key: 'answering', title: 'Answering', url: '/answering' },
-    { key: 'history', title: 'History', url: '/history' },
+    { key: 'contents', title: 'Contents', url: '/contents' },
 ];
 export default function ProjectLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname(); // ex: /project/whoiam

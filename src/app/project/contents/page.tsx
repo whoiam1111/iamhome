@@ -161,7 +161,7 @@ const Home: NextPage = () => {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
                                 {events.map((item, index) => (
-                                    <Link href={`/project/history/${item.uid}`} key={index}>
+                                    <Link href={`/project/contents/${item.uid}`} key={index}>
                                         <div className="group cursor-pointer">
                                             <div className="relative overflow-hidden rounded-lg">
                                                 <img
