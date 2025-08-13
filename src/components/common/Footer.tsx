@@ -1,11 +1,9 @@
 "use client";
 
+import { footerMenus } from "@/lib/constants/footet";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function Footer() {
-  const router = useRouter();
-
   const handleTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -52,38 +50,16 @@ export default function Footer() {
 
       {/* 오른쪽 카테고리 영역 */}
       <div className="flex gap-2 items-center flex-1 justify-center sm:justify-end pr-0 sm:pr-[35px] sm:mb-[10px] text-[11px] sm:text-[13px] ">
-        <Link href="/about">
-          <span
-            onClick={handleTop}
-            className="text-[#1e1e1e] hover:underline cursor-pointer"
-          >
-            About
-          </span>
-        </Link>
-        <Link href="/teams">
-          <span
-            onClick={handleTop}
-            className="text-[#1e1e1e] hover:underline cursor-pointer"
-          >
-            Teams
-          </span>
-        </Link>
-        <Link href="/project">
-          <span
-            onClick={handleTop}
-            className="text-[#1e1e1e] hover:underline cursor-pointer"
-          >
-            Project
-          </span>
-        </Link>
-        <Link href="/contact">
-          <span
-            onClick={handleTop}
-            className="text-[#1e1e1e] hover:underline cursor-pointer"
-          >
-            Contact
-          </span>
-        </Link>
+        {footerMenus.map((menu, idx) => (
+          <Link href={menu.path} key={idx}>
+            <span
+              onClick={handleTop}
+              className="text-[#1e1e1e] hover:underline cursor-pointer"
+            >
+              {menu.title}
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );

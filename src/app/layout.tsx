@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
 
 export const metadata: Metadata = {
-  title: "I am creators",
-  description: "I am creators",
+  title: "I AM Creators' Team",
+  description: "I AM Creators' Team",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
@@ -15,9 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header />
-      <body>{children}</body>
-      <Footer />
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
