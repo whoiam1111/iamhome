@@ -24,7 +24,7 @@ export default function ProgramBox({
         <div className="absolute inset-0 bg-gray-500/30 opacity-0 hover:opacity-100 transition" />
       </div>
       <div className="p-10">
-        <div className="text-[20px] font-black mb-2 md:text-[25px] sm:text-[22px]">
+        <div className="text-[20px] font-bold mb-2 md:text-[25px] sm:text-[22px]">
           {title}
         </div>
         <div className="text-gray-600 text-xs sm:text-sm">{desc}</div>

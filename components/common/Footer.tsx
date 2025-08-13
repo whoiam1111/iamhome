@@ -1,6 +1,6 @@
 "use client";
 
-import { footerMenus } from "@/lib/constants/footet";
+import { footerMenus } from "../../lib/constants/footet";
 import Link from "next/link";
 
 export default function Footer() {

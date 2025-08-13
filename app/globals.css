@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-fadein: fadein 0.7s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  --animate-carousel: carousel 30s linear infinite;
+  @keyframes carousel {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    } /* reverse면 50%로 */
+  }
+}
