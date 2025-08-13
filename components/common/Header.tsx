@@ -6,32 +6,39 @@ import Image from "next/image";
 import NavItem from "./NavItem";
 
 export default function Header() {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHeaderShrunk = scrollPosition > 100;
-  const hideNavbar = scrollPosition > 70;
   const isMainPage = pathname === "/"; // 메인 페이지 여부 확인
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center px-4 transition-all duration-300 mb-[60px] ${
-        isHeaderShrunk ? "h-[50px]" : "h-[114px]"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 flex flex-col-reverse gap-3 items-center px-4 mb-[60px]
+        transition-transform duration-300 ${
+          isHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
     >
       <div
-        className={`absolute left-4 top-1 flex flex-col gap-1 text-sm p-2 ${
-          hideNavbar ? "hidden" : ""
-        }`}
+        className={`sm:absolute sm:left-4 sm:top-3 flex sm:flex-col gap-2 sm:gap-1 sm:py-3 px-2 `}
       >
         <NavItem
           label="About"
@@ -54,7 +61,7 @@ export default function Header() {
           onClick={() => router.push("/contact")}
         />
       </div>
-      <div className="mx-auto cursor-pointer pt-[15px] flex justify-center w-full">
+      <div className="mx-auto cursor-pointer flex justify-center w-full">
         <Image
           src={
             isMainPage
@@ -65,7 +72,7 @@ export default function Header() {
           width={152}
           height={60}
           onClick={() => router.push("/")}
-          className={`w-[152px] sm:w-[120px] ${isHeaderShrunk ? "hidden" : ""}`}
+          className={`w-[120px] sm:w-[152px]`}
           priority
         />
       </div>

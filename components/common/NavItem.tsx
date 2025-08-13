@@ -17,7 +17,7 @@ export default function NavItem({
   return (
     <a
       onClick={onClick}
-      className={`cursor-pointer transition-colors 
+      className={`cursor-pointer transition-colors text-xs sm:text-sm
                 ${
                   isMainPage
                     ? "text-white hover:text-gray-300"
