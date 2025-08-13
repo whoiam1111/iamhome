@@ -2,7 +2,7 @@
 
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import MainSlider from "@/app/components/MainSlider";
+import MainSlider from "@/components/MainSlider";
 import Link from "next/link";
 
 const ChatIcon = () => (

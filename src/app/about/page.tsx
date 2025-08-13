@@ -1,16 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/navigation";
+import ProgramBox from "@/components/about/ProgramBox";
+import { programInfo } from "@/lib/constants/about";
 
 export default function About() {
   const router = useRouter();
-
-  const movePage = (page: string) => {
-    router.push(page);
-    window.scrollTo({ top: 0 });
-  };
 
   return (
     <div className="flex flex-col items-center w-full mt-[150px] animate-fade-in">
@@ -100,63 +97,21 @@ export default function About() {
         <div className="text-[20px] font-black mb-[50px] md:text-[40px] sm:text-[35px]">
           &lsquo;진짜 나&rsquo;를 발견하는 여정을 함께 해요.
         </div>
-
         <div className="flex gap-10 mb-5 flex-col md:flex-row">
-          {/* Program 1 */}
-          <div
-            onClick={() => movePage("/project/history")}
-            className="rounded-[20px] shadow-md overflow-hidden cursor-pointer transition hover:bg-[#e7e7e7] md:w-1/2"
-          >
-            <div className="relative aspect-video">
-              <Image
-                src="https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/7f728d83-dd34-44a7-0453-ace758c1fd00/public"
-                alt="program 1"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gray-500/30 opacity-0 hover:opacity-100 transition" />
-            </div>
-            <div className="p-10">
-              <div className="text-[20px] font-black mb-2 md:text-[25px] sm:text-[22px]">
-                강연 및 각종 프로그램
-              </div>
-              <div className="text-gray-600 text-xs sm:text-sm">
-                &lsquo;진짜 나&rsquo;를 찾고, 성장할 수 있도록 강연, 훈련,
-                멘토링, 다양한 콘텐츠를 기획·운영합니다.
-              </div>
-            </div>
-          </div>
-
-          {/* Program 2 */}
-          <div
-            onClick={() => movePage("/project")}
-            className="rounded-[20px] shadow-md overflow-hidden cursor-pointer transition hover:bg-[#e7e7e7] md:w-1/2"
-          >
-            <div className="relative aspect-video">
-              <Image
-                src="https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/77d82010-7c68-47eb-17d1-89d2ed9d8a00/public"
-                alt="program 2"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gray-500/30 opacity-0 hover:opacity-100 transition" />
-            </div>
-            <div className="p-10">
-              <div className="text-[20px] font-black mb-2 md:text-[25px] sm:text-[22px]">
-                Who I AM
-              </div>
-              <div className="text-gray-600 text-xs sm:text-sm">
-                &lsquo;진짜 나&rsquo;를 찾고, 성장할 수 있는 체계적인 훈련
-                프로그램을 운영합니다. 강연, 코칭, 교류와 각종 프로그램을 함께
-                할 수 있습니다.
-              </div>
-            </div>
-          </div>
+          {programInfo.map((program, idx) => (
+            <ProgramBox
+              key={idx}
+              path={program.path}
+              img={program.img}
+              title={program.title}
+              desc={program.desc}
+            />
+          ))}
         </div>
 
         {/* More button */}
         <div
-          onClick={() => movePage("/project/history")}
+          onClick={() => router.push("/project/contents")}
           className="flex items-center gap-2 text-[12px] font-medium cursor-pointer hover:underline md:text-[18px] sm:text-[15px]"
         >
           더 많은 프로그램 보기

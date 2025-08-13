@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import NavItem from "./NavItem";
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -16,11 +17,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const movePage = (page: string) => {
-    router.push(page);
-    window.scrollTo({ top: 0 });
-  };
 
   const isHeaderShrunk = scrollPosition > 100;
   const hideNavbar = scrollPosition > 70;
@@ -40,25 +36,24 @@ export default function Header() {
         <NavItem
           label="About"
           active={pathname === "/about"}
-          onClick={() => movePage("/about")}
+          onClick={() => router.push("/about")}
         />
         <NavItem
           label="Teams"
           active={pathname.includes("/teams")}
-          onClick={() => movePage("/teams")}
+          onClick={() => router.push("/teams")}
         />
         <NavItem
           label="Project"
           active={pathname.includes("/project")}
-          onClick={() => movePage("/project/whoiam")}
+          onClick={() => router.push("/project/whoiam")}
         />
         <NavItem
           label="Contact"
           active={pathname === "/contact"}
-          onClick={() => movePage("/contact")}
+          onClick={() => router.push("/contact")}
         />
       </div>
-
       <div className="mx-auto cursor-pointer pt-[15px] flex justify-center w-full">
         <Image
           src={
@@ -69,39 +64,11 @@ export default function Header() {
           alt="Title Logo"
           width={152}
           height={60}
-          onClick={() => movePage("/")}
+          onClick={() => router.push("/")}
           className={`w-[152px] sm:w-[120px] ${isHeaderShrunk ? "hidden" : ""}`}
           priority
         />
       </div>
     </div>
-  );
-}
-
-function NavItem({
-  label,
-  active,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) {
-  const pathname = usePathname();
-  const isMainPage = pathname === "/";
-
-  return (
-    <a
-      onClick={onClick}
-      className={`cursor-pointer transition-colors 
-                ${
-                  isMainPage
-                    ? "text-white hover:text-gray-300"
-                    : "text-gray-500 hover:text-black"
-                } 
-                ${active ? "font-semibold underline" : ""}`}
-    >
-      {label}
-    </a>
   );
 }

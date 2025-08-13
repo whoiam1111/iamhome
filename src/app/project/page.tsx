@@ -1,7 +1,7 @@
 // app/class-detail/page.tsx
 
 import type { NextPage } from "next";
-import DetailSlider from "../components/DetailSlider";
+import DetailSlider from "../../components/DetailSlider";
 
 const tabs = ["클래스 소개", "커리큘럼", "크리에이터", "리뷰"];
 
