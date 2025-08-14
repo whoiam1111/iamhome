@@ -63,6 +63,11 @@ export default function RollingCarousel() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <style jsx global>{`
+        .swiper-wrapper {
+          transition-timing-function: linear !important;
+        }
+      `}</style>
     </div>
   );
 }
