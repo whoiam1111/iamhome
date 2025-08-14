@@ -85,7 +85,7 @@ export default function FirstLayer() {
       {/* Section 4 */}
       <FadeInSection align={"center"}>
         <div
-          className={`w-full p-12 sm:p-24 mb-[120px] sm:mb-8 flex flex-col gap-5 items-center text-white text-shadow-sm
+          className={`w-full p-12 sm:p-24 mb-8 flex flex-col gap-5 items-center text-white text-shadow-sm
                       bg-[url("https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/c1b33447-6342-4192-3cee-1e76f8f80800/public")]
                       bg-cover bg-center`}
         >
