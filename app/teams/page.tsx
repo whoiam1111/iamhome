@@ -9,7 +9,7 @@ const teamData = [
   {
     title: "Answering Team",
     koreanText:
-      "우리는 심도 있는 자기 성찰을 통해 ‘나다움’을 찾아갑니다. ‘나는 누구인가?’라는 근원적 질문을 넘어 ‘i am who i am.’이라는 각자의 답을 찾아갑니다. 각자가 얻은 지혜를 나누며 더 나은 세상을 만들기 위해 노력합니다.",
+      "우리는 심도 있는 자기 성찰을 통해 ‘나다움’을 찾아갑니다. ‘나는 누구인가?’라는 근원적 질문을 넘어 ‘I am who I am.’이라는 각자의 답을 찾아갑니다. 각자가 얻은 지혜를 나누며 더 나은 세상을 만들기 위해 노력합니다.",
     englishText:
       "We look for &ldquo;me-like&rdquo; through deep self-reflection. Go beyond the fundamental question of &ldquo;Who am I?&rdquo; and look for your own answer, &ldquo;I am who am.&rdquo; We will try to share the wisdom we have gained and create a better world.",
     imageUrl: ANSWERING_TEAM,
