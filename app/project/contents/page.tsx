@@ -21,6 +21,7 @@ const ChatIcon = () => (
         />
     </svg>
 );
+
 const BalloonIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +38,7 @@ const BalloonIcon = () => (
         />
     </svg>
 );
+
 const GuitarIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -54,6 +56,7 @@ const GuitarIcon = () => (
         <path strokeLinecap="round" strokeLinejoin="round" d="M11.5 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
     </svg>
 );
+
 const MaskIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +75,8 @@ const MaskIcon = () => (
     </svg>
 );
 
-interface EventItem {
+// API에서 받은 원본 타입
+interface RawEvent {
     PK: string;
     SK: string;
     created_at: string;
@@ -80,18 +84,24 @@ interface EventItem {
     duration_type: string;
     end_date: string;
     homepage: string;
-    image_urls: string[];
+    image_urls: string[] | string;
     manager: string;
     place: string;
     project_category: string;
     project_time: string;
-    sessions: any[];
-    speaker: string;
+    sessions: unknown[];
+    speaker: string | string[];
     staff: string;
     start_date: string;
     title: string;
     uid: string;
     updated_at: string;
+}
+
+// 렌더링용 타입
+interface EventItem extends Omit<RawEvent, 'image_urls' | 'speaker'> {
+    image_urls: string[];
+    speaker: string[];
 }
 
 const Home: NextPage = () => {
@@ -104,18 +114,19 @@ const Home: NextPage = () => {
                 const res = await fetch(
                     'https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events?homepage=불난데부채질&limit=100'
                 );
-                const json = await res.json();
+                const json: { items: RawEvent[] } = await res.json();
 
-                // image_urls가 문자열로 들어오기 때문에 배열로 변환
-                const items: EventItem[] = json.items.map((item: any) => ({
+                const items: EventItem[] = json.items.map((item) => ({
                     ...item,
-                    image_urls: typeof item.image_urls === 'string' ? JSON.parse(item.image_urls) : item.image_urls,
+                    image_urls:
+                        typeof item.image_urls === 'string' ? JSON.parse(item.image_urls) : item.image_urls || [],
+                    speaker: Array.isArray(item.speaker) ? item.speaker : item.speaker ? [item.speaker] : [],
                 }));
 
                 setEvents(items);
             } catch (err) {
                 console.error('행사 불러오기 실패:', err);
-                setEvents([]); // 실패 시 빈 배열
+                setEvents([]);
             } finally {
                 setLoading(false);
             }
@@ -124,7 +135,6 @@ const Home: NextPage = () => {
         fetchEvents();
     }, []);
 
-    console.log(events);
     return (
         <div className="bg-white text-gray-800 font-sans">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
