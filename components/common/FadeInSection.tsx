@@ -4,9 +4,14 @@ import { useEffect, useRef, useState } from "react";
 interface FadeInSectionProps {
   children: React.ReactNode;
   align: string;
+  isMove?: boolean;
 }
 
-export default function FadeInSection({ children, align }: FadeInSectionProps) {
+export default function FadeInSection({
+  children,
+  align,
+  isMove = true,
+}: FadeInSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,7 +43,11 @@ export default function FadeInSection({ children, align }: FadeInSectionProps) {
     <div
       ref={domRef}
       className={`w-full flex justify-${align} transition-all duration-1000 ease-out transform
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+        ${
+          isVisible
+            ? `opacity-100 ${isMove ? "translate-y-0" : ""}`
+            : `opacity-0 ${isMove ? "translate-y-10" : ""}`
+        }
       `}
     >
       {children}
