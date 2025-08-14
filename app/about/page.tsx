@@ -22,14 +22,14 @@ export default function About() {
       </div>
 
       {/* Main Title Section */}
-      <div className="flex flex-col w-full lg:w-[1024px] mt-12 mb-32 px-4 md:px-5">
+      <div className="flex flex-col w-full lg:w-[1024px] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
         <FadeInSection align="start">
           <div className="flex flex-col text-[25px] font-black md:text-[35px] lg:text-[50px]">
             <div>진짜 내가 되고 싶은 우리가 모여</div>
             <div>더 나은 세상을 향해</div>
           </div>
         </FadeInSection>
-        <div className="mt-20 rounded-[30px] mb-10 w-full overflow-hidden relative aspect-[16/9]">
+        <div className="mt-10 sm:mt-20 rounded-[30px] mb-10 w-full overflow-hidden relative aspect-[16/9]">
           <Image
             src={ABOUT_MAIN}
             alt="About visual"
@@ -109,14 +109,14 @@ export default function About() {
       </FadeInSection>
 
       {/* Program Section */}
-      <div className="flex flex-col items-center gap-5 w-full lg:w-[1024px] mb-[100px] px-4">
+      <div className="flex flex-col items-center gap-5 w-full lg:w-[1024px] mb-16 sm:mb-24 px-4">
         <FadeInSection align="center">
           <div className="text-[15px] font-bold md:text-[20px] sm:text-[18px]">
             우리가 하는 일
           </div>
         </FadeInSection>
         <FadeInSection align="center">
-          <div className="text-[20px] font-black mb-[50px] md:text-[35px] lg:text-[40px] ">
+          <div className="text-[20px] font-black mb-6 sm:mb-12 md:text-[35px] lg:text-[40px] ">
             &lsquo;진짜 나&rsquo;를 발견하는 여정을 함께 해요.
           </div>
         </FadeInSection>
