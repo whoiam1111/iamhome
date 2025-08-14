@@ -13,9 +13,16 @@ export default function About() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center w-full mt-[150px] animate-fade-in text-neutral-800">
+    <div className="flex flex-col items-center w-full mt-[200px] text-gray-800">
+      <div className="text-center font-serif italic text-3xl sm:text-4xl mb-4 animate-fadein">
+        About
+      </div>
+      <div className="text-center text-sm sm:text-base mb-12 md:mb-16 animate-fadein">
+        우리의 비전과 가치는 우리의 원동력입니다.
+      </div>
+
       {/* Main Title Section */}
-      <div className="flex flex-col w-full lg:w-[1024px] mt-20 mb-32 px-4 md:px-5">
+      <div className="flex flex-col w-full lg:w-[1024px] mt-12 mb-32 px-4 md:px-5">
         <FadeInSection align="start">
           <div className="flex flex-col text-[25px] font-black md:text-[35px] lg:text-[50px]">
             <div>진짜 내가 되고 싶은 우리가 모여</div>

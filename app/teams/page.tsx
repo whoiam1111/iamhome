@@ -1,18 +1,18 @@
 "use client";
 
-import type { NextPage } from "next";
 import Image from "next/image";
 import React from "react";
+import { ANSWERING_TEAM, MEDIA_TEAM } from "../../lib/constants/image_path";
+import FadeInSection from "../../components/common/FadeInSection";
 
 const teamData = [
   {
-    title: "Media Team",
+    title: "Answering Team",
     koreanText:
-      "우리는 독창적인 예술성을 지닌 사람들이 모여 창조적인 아름다움을 만듭니다. 아름다운 문화는 사회를 더 낫게 만든다는 믿음으로 우리의 아름다운 문화를 다양한 매개로 만들어 세상에 전하고자 합니다.",
+      "우리는 심도 있는 자기 성찰을 통해 ‘나다움’을 찾아갑니다. ‘나는 누구인가?’라는 근원적 질문을 넘어 ‘i am who i am.’이라는 각자의 답을 찾아갑니다. 각자가 얻은 지혜를 나누며 더 나은 세상을 만들기 위해 노력합니다.",
     englishText:
-      "We bring together people with original artistry to create creative beauty. With the belief that beautiful culture makes society better, we would like to convey our beautiful culture to the world through various mediums.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1594744806549-83a81239796a?w=1200&q=80",
+      "We look for &ldquo;me-like&rdquo; through deep self-reflection. Go beyond the fundamental question of &ldquo;Who am I?&rdquo; and look for your own answer, &ldquo;I am who am.&rdquo; We will try to share the wisdom we have gained and create a better world.",
+    imageUrl: ANSWERING_TEAM,
   },
   {
     title: "Communication Team",
@@ -24,13 +24,12 @@ const teamData = [
       "https://images.unsplash.com/photo-1499946981954-e7f4b234d7fa?w=1200&q=80",
   },
   {
-    title: "Answering Team",
+    title: "Media Team",
     koreanText:
-      "우리는 심도 있는 자기 성찰을 통해 ‘나다움’을 찾아갑니다. ‘나는 누구인가?’라는 근원적 질문을 넘어 ‘i am who i am.’이라는 각자의 답을 찾아갑니다. 각자가 얻은 지혜를 나누며 더 나은 세상을 만들기 위해 노력합니다.",
+      "우리는 독창적인 예술성을 지닌 사람들이 모여 창조적인 아름다움을 만듭니다. 아름다운 문화는 사회를 더 낫게 만든다는 믿음으로 우리의 아름다운 문화를 다양한 매개로 만들어 세상에 전하고자 합니다.",
     englishText:
-      "We look for &ldquo;me-like&rdquo; through deep self-reflection. Go beyond the fundamental question of &ldquo;Who am I?&rdquo; and look for your own answer, &ldquo;I am who am.&rdquo; We will try to share the wisdom we have gained and create a better world.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1525183995014-BD94c0750cd5?w=1200&q=80",
+      "We bring together people with original artistry to create creative beauty. With the belief that beautiful culture makes society better, we would like to convey our beautiful culture to the world through various mediums.",
+    imageUrl: MEDIA_TEAM,
   },
 ];
 
@@ -42,7 +41,7 @@ const TeamSection = ({
   imageUrl,
 }: (typeof teamData)[0]) => (
   <div className="w-full flex flex-col items-center py-12 md:py-16">
-    <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden">
+    <div className="relative w-full h-[200px] md:h-[400px] rounded-lg overflow-hidden">
       <Image
         src={imageUrl}
         alt={title}
@@ -62,21 +61,27 @@ const TeamSection = ({
   </div>
 );
 
-const TeamsPage: NextPage = () => {
+export default function TeamPapge() {
   return (
-    <div className="bg-white text-gray-800 min-h-screen">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-4xl mx-auto">
-          {/* Team Sections */}
-          <div>
-            {teamData.map((team) => (
-              <TeamSection key={team.title} {...team} />
-            ))}
+    <div className="bg-white text-gray-800 min-h-screen mt-[200px] mb-[30px]">
+      <FadeInSection align="center" isMove={false}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-4 font-serif italic text-3xl sm:text-4xl">
+            Teams
+          </div>
+          <div className="text-center text-sm sm:text-base">
+            우리는 연대하고 협력하며, 도전합니다.
+          </div>
+          <div className="w-full max-w-4xl mx-auto">
+            {/* Team Sections */}
+            <div>
+              {teamData.map((team) => (
+                <TeamSection key={team.title} {...team} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </FadeInSection>
     </div>
   );
-};
-
-export default TeamsPage;
+}

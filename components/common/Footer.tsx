@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full text-white font-pretendard py-4 sm:flex sm:flex-row flex-col-reverse justify-center items-center">
+    <div className="w-full text-white font-pretendard py-4 flex flex-col-reverse gap-2 sm:flex-row justify-center items-center">
       {/* 왼쪽 정보 영역 */}
       <div className="flex flex-col justify-center flex-1 items-center sm:items-start px-0 sm:px-[35px]">
         <div className="my-[6px] text-[11px]">
