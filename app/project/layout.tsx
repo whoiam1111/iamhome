@@ -22,7 +22,7 @@ export default function ProjectLayout({
 
   return (
     <div className="w-full flex flex-col items-center">
-      <nav className="flex justify-center gap-4 mt-[170px] mb-5 text-gray-500 text-base sm:text-sm">
+      <nav className="flex justify-center gap-4 mt-[170px] mb-5 text-gray-500 text-sm sm:text-base">
         {project_menu.map((it) => (
           <button
             key={it.key}

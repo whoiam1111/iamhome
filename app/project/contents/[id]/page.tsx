@@ -9,7 +9,16 @@ interface EventDetail {
     title: string;
     description: string;
     image_urls: string[];
-    speaker: string[]; // 배열로 통일
+    speaker: string[];
+    manager: string;
+}
+
+interface RawEvent {
+    uid: string;
+    title: string;
+    description: string;
+    image_urls: string | string[];
+    speaker: string | string[];
     manager: string;
 }
 
@@ -34,14 +43,14 @@ export default function LectureDetailPage() {
                     `https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events/${eventId}`
                 );
                 if (!res.ok) throw new Error('Failed to fetch event data');
-                const data = await res.json();
+                const data: RawEvent = await res.json();
 
                 // 전체 이벤트
                 const res2 = await fetch(
                     'https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events?homepage=불난데부채질&limit=100'
                 );
                 if (!res2.ok) throw new Error('Failed to fetch events list');
-                const datas = await res2.json();
+                const datas: { items: RawEvent[] } = await res2.json();
 
                 // image_urls 문자열 → 배열, speaker 문자열 → 배열 처리
                 const parsedEvent: EventDetail = {
@@ -49,13 +58,15 @@ export default function LectureDetailPage() {
                     image_urls:
                         typeof data.image_urls === 'string' ? JSON.parse(data.image_urls) : data.image_urls || [],
                     speaker: Array.isArray(data.speaker) ? data.speaker : data.speaker ? [data.speaker] : [],
+                    manager: data.manager || '',
                 };
 
-                const parsedEvents: EventDetail[] = datas.items.map((item: any) => ({
+                const parsedEvents: EventDetail[] = datas.items.map((item: RawEvent) => ({
                     ...item,
                     image_urls:
                         typeof item.image_urls === 'string' ? JSON.parse(item.image_urls) : item.image_urls || [],
                     speaker: Array.isArray(item.speaker) ? item.speaker : item.speaker ? [item.speaker] : [],
+                    manager: item.manager || '',
                 }));
 
                 setEvent(parsedEvent);
@@ -76,7 +87,6 @@ export default function LectureDetailPage() {
 
     const creators = [...event.speaker, event.manager].filter(Boolean);
 
-    // 이미지 슬라이드 버튼
     const prevImage = () => {
         if (!event.image_urls || event.image_urls.length === 0) return;
         setCurrentImageIndex((prev) => (prev === 0 ? event.image_urls.length - 1 : prev - 1));

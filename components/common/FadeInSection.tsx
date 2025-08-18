@@ -3,13 +3,11 @@ import { useEffect, useRef, useState } from "react";
 
 interface FadeInSectionProps {
   children: React.ReactNode;
-  align: string;
   isMove?: boolean;
 }
 
 export default function FadeInSection({
   children,
-  align,
   isMove = true,
 }: FadeInSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,7 +40,7 @@ export default function FadeInSection({
   return (
     <div
       ref={domRef}
-      className={`w-full flex justify-${align} transition-all duration-1000 ease-out transform
+      className={`w-full transition-all duration-1000 ease-out transform
         ${
           isVisible
             ? `opacity-100 ${isMove ? "translate-y-0" : ""}`
