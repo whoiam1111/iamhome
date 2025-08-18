@@ -1,61 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
 import Image from "next/image";
 import FadeInSection from "../../../components/common/FadeInSection";
-
-const compositionItems = [
-  {
-    kor: "학습",
-    eng: "learning",
-    img: "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/453dc262-e790-47f0-dc86-e1b071332b00/public",
-  },
-  {
-    kor: "교류",
-    eng: "interaction",
-    img: "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/2211e50a-fd7c-4e62-ec3f-2f892925db00/public",
-  },
-  {
-    kor: "체험",
-    eng: "experience",
-    img: "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/3acea7e1-cb37-4da2-ab4e-a0c8651f0100/public",
-  },
-  {
-    kor: "코칭",
-    eng: "coaching",
-    img: "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/4b769d4e-4974-4d46-9a87-f67bc5df8900/public",
-  },
-];
-
-const stepItems = [
-  { step: "STEP 1", title: "기초 학습과 코칭", period: "2개월" },
-  { step: "STEP 2", title: "핵심 학습과 코칭", period: "3개월" },
-  { step: "STEP 3", title: "심화 학습과 실습", period: "4개월" },
-];
-
-const scheduleItems = [
-  { time: "15 minute", kor: "준비 및 복습", eng: "Preparation and Review" },
-  { time: "40 minute", kor: "강의 1교시", eng: "1st Period of Lecture" },
-  { time: "10 minute", kor: "휴식 시간", eng: "Break Time" },
-  { time: "40 minute", kor: "강의 2교시", eng: "2nd Period of Lecture" },
-  { time: "30 minute", kor: "팀별 모임", eng: "Meeting by Team" },
-];
+import {
+  compositionItems,
+  scheduleItems,
+  stepItems,
+} from "../../../lib/constants/whoiam";
 
 export default function WhoIAmPage() {
-  const [showThumbnail, setShowThumbnail] = useState(true);
-  const introVideo = useRef<HTMLVideoElement | null>(null);
-
-  const handleThumbnailClick = () => {
-    if (introVideo.current) {
-      introVideo.current.play();
-      setShowThumbnail(false);
-    }
-  };
-
-  const handleVideoEnded = () => {
-    setShowThumbnail(true);
-  };
-
   const handleLinkToApply = () => {
     window.open(
       "https://the-form.io/forms/survey/response/32c34765-a419-4987-84b3-777308f5be42",
@@ -84,31 +37,17 @@ export default function WhoIAmPage() {
       <FadeInSection>
         <section className="max-w-4xl rounded-lg mx-auto mt-16 mb-20 md:mb-24">
           <div className="mb-14 w-full mx-auto">
-            {showThumbnail ? (
-              <Image
-                src="/assets/WhoIAM-IntroductionImg.png"
-                alt="Who I AM Introduction Thumbnail"
-                width={1280}
-                height={720}
-                className="w-full cursor-pointer rounded-lg shadow-lg object-cover"
-                onClick={handleThumbnailClick}
-                style={{ aspectRatio: "16 / 9" }}
-              />
-            ) : (
-              <video
-                ref={introVideo}
-                className="w-full rounded-lg shadow-lg"
-                controls
-                controlsList="nodownload"
-                disablePictureInPicture
-                onEnded={handleVideoEnded}
-                autoPlay
-                style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-              >
-                <source src="/assets/WhoIAm_Video.mp4" type="video/mp4" />
-                동영상 재생을 지원하지 않는 브라우저입니다.
-              </video>
-            )}
+            <video
+              className="w-full rounded-lg shadow-lg aspect-video object-cover"
+              controls
+              controlsList="nodownload"
+              disablePictureInPicture
+              autoPlay={false}
+              poster="/assets/WhoIAM-IntroductionImg.png"
+            >
+              <source src="/assets/WhoIAm_Video.mp4" type="video/mp4" />
+              동영상 재생을 지원하지 않는 브라우저입니다.
+            </video>
           </div>
         </section>
       </FadeInSection>
@@ -171,7 +110,7 @@ export default function WhoIAmPage() {
             ))}
           </div>
           <p className="text-xs text-gray-400 text-center font-light mt-4">
-            ※ 매 기수별 커리큘럼에 의해 운영 순서 및 시간은 상이할 수 있음
+            ※ 기수별 커리큘럼에 따라 운영 순서 및 시간은 상이할 수 있습니다.
           </p>
         </section>
       </FadeInSection>
