@@ -64,7 +64,7 @@ const TeamSection = ({
 export default function TeamPapge() {
   return (
     <div className="bg-white text-gray-800 min-h-screen mt-[200px] mb-[30px]">
-      <FadeInSection align="center" isMove={false}>
+      <FadeInSection isMove={false}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-4 font-serif italic text-3xl sm:text-4xl">
             Teams
