@@ -21,6 +21,7 @@ export default function About() {
         우리의 비전과 가치는 우리의 원동력입니다.
       </div>
 
+      {/* 1. Hero Section */}
       <div className="flex flex-col w-full lg:w-[1024px] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
         <FadeInSection>
           <div className="flex flex-col font-black text-[25px] md:text-[35px] lg:text-[50px] tracking-tight">
@@ -50,9 +51,9 @@ export default function About() {
         </FadeInSection>
       </div>
 
-      {/* Motive Section */}
+      {/* 2. Motive Section */}
       <FadeInSection isMove={false}>
-        <div className="flex flex-col items-center gap-5 w-full bg-[#f8f8f8] py-[100px] mb-[150px] px-4">
+        <div className="flex flex-col items-center gap-3 sm:gap-5 w-full bg-[#f8f8f8] py-[100px] mb-[150px] px-4">
           <div className="text-[15px] font-bold md:text-[18px] lg:text-[20px]">
             우리의 모티브
           </div>
@@ -73,20 +74,22 @@ export default function About() {
             </div>
             <div> (출애굽기 3:14)</div>
           </div>
-          <div className="mt-[50px] text-[15px] font-semibold tracking-tight flex flex-col gap-2 md:text-[18px] lg:text-[20px]">
-            <div>&lsquo;I AM&rsquo;이라는 이름은</div>
-            <div>존재의 의미를 찾는 것, 즉 나 자신으로서</div>
+          <div className="mt-[50px] font-semibold tracking-tight flex flex-col gap-1 text-sm md:text-lg lg:text-xl">
             <div>
-              각자가 자신의 고유한 삶의 의미와 가치를 찾아가는 것을 표현합니다.
+              &lsquo;I AM&rsquo;이라는 이름은 존재의 의미를 찾는 것, 즉 나
+              자신으로서
+            </div>
+            <div>
+              각자가 자신의 고유한 삶의 의미와 가치를 찾아가는 것을 의미합니다.
             </div>
           </div>
         </div>
       </FadeInSection>
 
-      {/* Vision Section */}
+      {/* 3. Vision Section */}
       <FadeInSection>
         <div className="w-full flex flex-col items-center mb-[120px] sm:mb-[180px]">
-          <div className="text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-5">
+          <div className="text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
             우리가 추구하는 것
           </div>
           <div className="text-[20px] font-black mb-[50px] md:text-[35px] lg:text-[40px] ">
@@ -108,10 +111,10 @@ export default function About() {
         </div>
       </FadeInSection>
 
-      {/* Program Section */}
+      {/* 4. Program Section */}
       <div className="flex flex-col items-center gap-5 w-full lg:w-[1024px] mb-16 sm:mb-24 px-4">
         <FadeInSection>
-          <div className="text-center text-[15px] font-bold md:text-[20px] sm:text-[18px]">
+          <div className="text-center text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
             우리가 하는 일
           </div>
           <div className="text-center text-[20px] font-black mb-6 sm:mb-12 md:text-[35px] lg:text-[40px] ">
@@ -130,7 +133,7 @@ export default function About() {
           </div>
         </FadeInSection>
 
-        {/* More button */}
+        {/* 5. More button */}
         <FadeInSection isMove={false}>
           <div
             onClick={() => router.push("/project/contents")}

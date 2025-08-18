@@ -1,8 +1,8 @@
 export const records = [
-  { title: "누적 프로그램", data: "150회+" },
-  { title: "누적 참가자", data: "1500명+" },
-  { title: "프로그램 이수자", data: "500명+" },
-  { title: "참여 만족도", data: "4.5/5.0점" },
+  { title: "누적 프로그램", data: "150", unit: "회+" },
+  { title: "누적 참가자", data: "1500", unit: "명+" },
+  { title: "프로그램 이수자", data: "500", unit: "명+" },
+  { title: "참여 만족도", data: "4.5 / 5.0", unit: "점" },
 ];
 
 export const images = [

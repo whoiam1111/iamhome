@@ -5,15 +5,48 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import FadeInSection from "../../components/common/FadeInSection";
 import RollingCarousel from "../../components/main/RollingCarousel";
+import { ArrowDownIcon } from "@heroicons/react/24/outline";
+import { useEffect, useRef } from "react";
 // import { BOY } from "../../lib/constants/image_path";
 
 export default function FirstLayer() {
   const router = useRouter();
+  const nextSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const smoothScroll = (target: HTMLElement, duration = 1000) => {
+    const start = window.scrollY;
+    const distance = target.getBoundingClientRect().y;
+    let startTime: number | null = null;
+
+    const animation = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      // easeInOutCubic 함수 적용 (부드럽게 가속/감속)
+      const ease =
+        progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+      window.scrollTo(0, start + distance * ease);
+
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    };
+
+    requestAnimationFrame(animation);
+  };
+
+  const scrollToNext = () => {
+    if (nextSectionRef.current) {
+      smoothScroll(nextSectionRef.current, 1200);
+    }
+  };
 
   return (
     <div className={`w-full h-full flex flex-col items-center`}>
-      {/* Section 1. Main */}
-      <div className="relative flex justify-center items-center h-screen sm:w-full sm:h-full mb-[120px] sm:mb-[150px]">
+      {/* 1. Hero Section */}
+      <div className="relative flex justify-center items-center h-screen sm:w-full">
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -36,11 +69,21 @@ export default function FirstLayer() {
             I AM creators&apos; team
           </div>
         </div>
+        <div className="absolute bottom-10">
+          <ArrowDownIcon
+            onClick={scrollToNext}
+            className="size-16 text-white animate-[bounce_1.5s_ease-in-out_infinite] cursor-pointer"
+          />
+        </div>
       </div>
 
-      {/* Sectoion 2. Data */}
+      {/* 2. Data Section */}
       <FadeInSection>
-        <div className="p-5 w-full mx-auto lg:w-[1024px] flex flex-col gap-12 mb-[120px] md:mb-[150px] text-neutral-800">
+        <div
+          ref={nextSectionRef}
+          className="p-5 w-full mx-auto lg:w-[1024px] flex flex-col gap-12 
+          mb-[120px] md:mb-[150px] pt-[120px] sm:pt-[150px] text-neutral-800"
+        >
           <div className="flex flex-col justify-center mb-6 sm:mb-12">
             <div className="flex flex-col text-2xl sm:text-3xl md:text-5xl sm:gap-3 mb-4 sm:mb-8 font-extrabold">
               <div>I AM은 꾸준한 성장을 통해</div>
@@ -55,7 +98,12 @@ export default function FirstLayer() {
             {records.map((record, idx) => (
               <div key={idx} className="flex flex-col gap-3">
                 <div className="text-base sm:text-2xl">{record.title}</div>
-                <div className="text-6xl font-extrabold">{record.data}</div>
+                <div className="flex items-baseline gap-1">
+                  <div className="text-6xl font-extrabold">{record.data}</div>
+                  <div className="text-[45px] font-extrabold">
+                    {record.unit}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -63,9 +111,9 @@ export default function FirstLayer() {
         </div>
       </FadeInSection>
 
-      {/* Section 3. Rolling Slider */}
+      {/* 3. Rolling Carousel */}
       <FadeInSection>
-        <div className="w-full flex flex-col items-center mb-[120px] sm:mb-[200px]">
+        <div className="w-full flex flex-col items-center bg-gray-50 py-30">
           <div className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-5 text-2xl md:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-8 text-neutral-800">
             <span>I AM은 새로운 컨텐츠를 만들고,</span>
             <span> 도전합니다.</span>
@@ -82,7 +130,7 @@ export default function FirstLayer() {
         </div>
       </FadeInSection>
 
-      {/* Section 4. CTA Section */}
+      {/* 4. CTA Section */}
       <FadeInSection>
         <div
           className={`w-full p-12 sm:p-24 mb-8 flex flex-col gap-5 items-center text-white text-shadow-sm
