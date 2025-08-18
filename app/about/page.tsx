@@ -13,7 +13,7 @@ export default function About() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center w-full mt-[200px] text-gray-800">
+    <div className="w-full flex flex-col items-center mt-[200px] text-gray-800">
       <div className="text-center font-serif italic text-3xl sm:text-4xl mb-4 animate-fadein">
         About
       </div>
@@ -23,12 +23,12 @@ export default function About() {
 
       <div className="flex flex-col w-full lg:w-[1024px] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
         <FadeInSection>
-          <div className="flex flex-col text-[25px] font-black md:text-[35px] lg:text-[50px]">
+          <div className="flex flex-col font-black text-[25px] md:text-[35px] lg:text-[50px] tracking-tight">
             <div>진짜 내가 되고 싶은 우리가 모여</div>
             <div>더 나은 세상을 향해</div>
           </div>
         </FadeInSection>
-        <div className="mt-10 sm:mt-20 rounded-[30px] mb-10 w-full overflow-hidden relative aspect-[16/9]">
+        <div className="mt-10 sm:mt-20 rounded-[30px] mb-10 w-full overflow-hidden relative aspect-video">
           <Image
             src={ABOUT_MAIN}
             alt="About visual"
@@ -49,6 +49,7 @@ export default function About() {
           </div>
         </FadeInSection>
       </div>
+
       {/* Motive Section */}
       <FadeInSection isMove={false}>
         <div className="flex flex-col items-center gap-5 w-full bg-[#f8f8f8] py-[100px] mb-[150px] px-4">
@@ -133,7 +134,8 @@ export default function About() {
         <FadeInSection isMove={false}>
           <div
             onClick={() => router.push("/project/contents")}
-            className="flex items-center gap-2 text-[12px] font-medium cursor-pointer hover:underline md:text-[15px] lg:text-[18px] "
+            className="flex justify-center items-center gap-2 font-medium cursor-pointer hover:underline
+            text-[12px] md:text-[15px] lg:text-[18px]"
           >
             더 많은 프로그램 보기
             <ArrowRightIcon className="size-3 sm:size-4" />
