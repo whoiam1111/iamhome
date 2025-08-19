@@ -4,6 +4,8 @@ import Image from "next/image";
 import FadeInSection from "../../../components/common/FadeInSection";
 import {
   compositionItems,
+  goalItems,
+  reviewItems,
   scheduleItems,
   stepItems,
 } from "../../../lib/constants/whoiam";
@@ -17,8 +19,8 @@ export default function WhoIAmPage() {
   };
 
   return (
-    <div className="w-full mx-auto px-6">
-      {/* 1. About Who I AM */}
+    <div className="w-full mx-auto *:px-6">
+      {/* About Who I AM */}
       <FadeInSection>
         <section className="text-center mt-8 md:mt-12 max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800">
@@ -33,7 +35,7 @@ export default function WhoIAmPage() {
         </section>
       </FadeInSection>
 
-      {/* 2. Video */}
+      {/* Video */}
       <FadeInSection>
         <section className="max-w-4xl rounded-lg mx-auto mt-16 mb-20 md:mb-24">
           <div className="mb-14 w-full mx-auto">
@@ -52,14 +54,51 @@ export default function WhoIAmPage() {
         </section>
       </FadeInSection>
 
-      {/* 3. Curriculum */}
+      {/* Gain from Who I AM */}
+      <section className="py-20 bg-gray-50 w-full">
+        <FadeInSection>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl md:text-2xl font-serif italic text-black text-center mb-4">
+              Who I AM에서 얻을 수 있는 것
+            </h2>
+            <p className="text-center text-xs md:text-sm text-gray-500 mb-10">
+              What You’ll Gain from &apos;Who I AM&apos;
+            </p>
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-4 mb-10">
+              {goalItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="text-center flex flex-col items-center gap-2 px-6 pt-5 pb-6 border-[1px] 
+                border-gray-100 shadow-md rounded-lg bg-white"
+                >
+                  <p className="font-serif italic text-sm md:text-base">
+                    {item.id}
+                  </p>
+                  <p className="text-base md:text-lg text-gray-700">
+                    {item.title}
+                  </p>
+                  <p className="text-sm md:text-base font-light text-gray-800">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-sm md:text-lg text-gray-700">
+              Who I AM은 자기 이해와 깊은 배움, 그리고 새로운 연대 속에서 ‘진짜
+              나’를 발견하고 잠재력을 실현하도록 합니다.
+            </p>
+          </div>
+        </FadeInSection>
+      </section>
+
+      {/* Curriculum */}
       <FadeInSection>
-        <section className="space-y-10 max-w-4xl mx-auto mb-20 md:mb-24">
+        <section className="space-y-10 max-w-4xl mx-auto pt-20 md:pt-24 mb-20 md:mb-24 ">
           <h2 className="text-xl md:text-2xl font-serif italic text-gray-800 text-center mb-4">
-            Program Curriculum
+            프로그램 커리큘럼
           </h2>
           <p className="text-center text-xs md:text-sm text-gray-500 mb-10">
-            프로그램 커리큘럼
+            Program Curriculum
           </p>
           <div className="divide-y divide-gray-200 divide-dashed flex flex-col gap-4">
             {stepItems.map((item) => (
@@ -67,7 +106,7 @@ export default function WhoIAmPage() {
                 key={item.step}
                 className="text-center flex justify-between items-center py-4"
               >
-                <p className="text-lg md:text-xl font-serif italic text-gray-700">
+                <p className="text-base md:text-lg font-serif italic text-gray-700">
                   {item.step}
                 </p>
                 <p className="text-base md:text-lg font-semibold text-gray-800">
@@ -82,14 +121,14 @@ export default function WhoIAmPage() {
         </section>
       </FadeInSection>
 
-      {/* 4. Schedule */}
+      {/* Schedule */}
       <FadeInSection>
-        <section className="max-w-4xl mx-auto pt-20 md:pt-24 mb-20 md:mb-24 border-t border-gray-300 ">
+        <section className="max-w-4xl mx-auto pt-20 md:pt-24 mb-20 md:mb-24 border-t border-gray-300">
           <h2 className="text-xl md:text-2xl font-serif italic text-gray-800 text-center mb-4">
-            Program Schedule
+            프로그램 일정표
           </h2>
           <p className="text-center text-xs md:text-sm text-gray-500 mb-6">
-            프로그램 일정표
+            Program Schedule
           </p>
           <div className="divide-y divide-gray-200 divide-dashed">
             {scheduleItems.map((item) => (
@@ -115,14 +154,14 @@ export default function WhoIAmPage() {
         </section>
       </FadeInSection>
 
-      {/* 5. Program Composition */}
+      {/* Program Composition */}
       <FadeInSection>
         <section className="text-center max-w-4xl mx-auto py-20 md:py-24 border-t border-gray-300">
           <h2 className="text-xl md:text-2xl font-serif italic text-gray-800">
-            Program Composition
+            프로그램 구성
           </h2>
           <p className="text-xs md:text-sm text-gray-500 mt-2 mb-14">
-            프로그램 구성
+            Program Composition
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12 max-w-4xl mx-auto">
             {compositionItems.map((item) => (
@@ -136,7 +175,7 @@ export default function WhoIAmPage() {
                     alt={item.kor}
                     width={800}
                     height={256}
-                    className="w-full bject-cover"
+                    className="w-full object-cover"
                   />
                 </div>
                 <div className="py-2">
@@ -151,13 +190,42 @@ export default function WhoIAmPage() {
         </section>
       </FadeInSection>
 
-      {/* 6. CTA 버튼 */}
+      {/* Reviews */}
+      <section className="w-full bg-gray-50 py-20 md:py-24">
+        <FadeInSection>
+          <h2 className="text-center text-xl md:text-2xl font-serif italic text-black">
+            수강 후기
+          </h2>
+          <p className="text-center text-xs md:text-sm text-gray-500 mt-2 mb-14">
+            Reviews
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-12 max-w-4xl mx-auto">
+            {reviewItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-col justify-center gap-2
+                rounded-lg shadow-md p-6 bg-white"
+              >
+                <p className="text-base md:text-lg font-semibold text-gray-700">
+                  {item.title}
+                </p>
+                <p className="text-xs md:text-sm text-gray-400">{item.desc}</p>
+                <p className="text-xs md:text-sm font-light text-gray-400">
+                  - {item.reviewer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </FadeInSection>
+      </section>
+
+      {/* CTA 버튼 */}
       <FadeInSection isMove={false}>
-        <section className="text-center mb-16 md:mb-20">
+        <section className="text-center my-16 md:my-20">
           <button
             onClick={handleLinkToApply}
             className="bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-10
-          rounded-md hover:bg-black transition-colors shadow-lg"
+            rounded-md hover:bg-black transition-colors shadow-lg cursor-pointer"
           >
             Who I AM 신청하기
           </button>

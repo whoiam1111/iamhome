@@ -39,7 +39,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="text-center">
-            <div className="text-gray-900 font-semibold text-base sm:text-lg">
+            <div className="text-gray-900 text-base sm:text-lg">
               제휴 / 문의
             </div>
             <div className="text-gray-500 text-sm sm:text-base">
