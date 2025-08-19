@@ -2,6 +2,9 @@
 export const BOY =
   "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/c1b33447-6342-4192-3cee-1e76f8f80800/public";
 
+export const WORRY =
+  "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/b3092959-aea5-4fe5-428a-1d12e06c8000/public";
+
 // about
 export const ABOUT_MAIN =
   "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/6e785781-848d-4051-c771-11e5c3536400/public";
