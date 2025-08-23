@@ -4,74 +4,8 @@ import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import MainSlider from '../../../components/MainSlider';
 import Link from 'next/link';
+import Image from 'next/image';
 
-// --- 아이콘 컴포넌트 (변경 없음) ---
-const PresentationIcon = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-blue-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
-        />
-    </svg>
-);
-const SparklesIcon = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-blue-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-        />
-    </svg>
-);
-const LightBulbIcon = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-blue-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-        />
-    </svg>
-);
-const TicketIcon = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-blue-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
-        />
-    </svg>
-);
-
-// --- 타입 정의 (변경 없음) ---
 interface RawEvent {
     PK: string;
     SK: string;
@@ -98,20 +32,19 @@ interface EventItem extends Omit<RawEvent, 'image_urls' | 'speaker'> {
     speaker: string[];
 }
 
-// --- 카테고리별 스타일 정의 ---
 const categoryStyles: { [key: string]: string } = {
     강연: 'bg-blue-500 text-white',
     팝업: 'bg-rose-500 text-white',
+    테마카페: 'bg-rose-500 text-white',
     원데이클래스: 'bg-amber-500 text-white',
+    프로그램: 'bg-amber-500 text-white',
     공연: 'bg-teal-500 text-white',
     default: 'bg-slate-500 text-white',
 };
-
 const getCategoryStyle = (category: string) => {
     return categoryStyles[category] || categoryStyles.default;
 };
 
-// --- 메인 페이지 컴포넌트 ---
 const Home: NextPage = () => {
     const [events, setEvents] = useState<EventItem[]>([]);
     const [loading, setLoading] = useState(true);
@@ -164,23 +97,42 @@ const Home: NextPage = () => {
                         </div>
                         <MainSlider />
                     </section>
-
                     <section className="my-12 md:my-16">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <PresentationIcon />
+                                <Image
+                                    src="/assets/contentlogo1.png"
+                                    alt="강연"
+                                    width={40}
+                                    height={40}
+                                />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">강연</span>
                             </div>
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <SparklesIcon />
+                                <Image
+                                    src="/assets/contentlogo2.png"
+                                    alt="팝업"
+                                    width={40}
+                                    height={40}
+                                />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">팝업</span>
                             </div>
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <LightBulbIcon />
+                                <Image
+                                    src="/assets/contentlogo3.png"
+                                    alt="원데이클래스"
+                                    width={40}
+                                    height={40}
+                                />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">원데이클래스</span>
                             </div>
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <TicketIcon />
+                                <Image
+                                    src="/assets/contentlogo4.png"
+                                    alt="공연"
+                                    width={40}
+                                    height={40}
+                                />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">공연</span>
                             </div>
                         </div>
@@ -195,7 +147,10 @@ const Home: NextPage = () => {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
                                 {events.map((item) => (
-                                    <Link href={`/project/contents/${item.uid}`} key={item.uid}>
+                                    <Link
+                                        href={`/project/contents/${item.uid}`}
+                                        key={item.uid}
+                                    >
                                         <div className="group cursor-pointer">
                                             <div className="relative overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300">
                                                 <img
