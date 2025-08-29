@@ -6,6 +6,11 @@ import MainSlider from '../../../components/MainSlider';
 import Link from 'next/link';
 import Image from 'next/image';
 
+interface ImageUrls {
+    event_photos?: string[];
+    poster_image?: string;
+}
+
 interface RawEvent {
     PK: string;
     SK: string;
@@ -14,7 +19,7 @@ interface RawEvent {
     duration_type: string;
     end_date: string;
     homepage: string;
-    image_urls: string[] | string;
+    image_urls: ImageUrls | string; // ✅ 수정
     manager: string;
     place: string;
     project_category: string;
@@ -27,8 +32,9 @@ interface RawEvent {
     uid: string;
     updated_at: string;
 }
+
 interface EventItem extends Omit<RawEvent, 'image_urls' | 'speaker'> {
-    image_urls: string[];
+    image_urls: ImageUrls; // ✅ 객체로 변환된 상태
     speaker: string[];
 }
 
@@ -49,6 +55,7 @@ const Home: NextPage = () => {
     const [events, setEvents] = useState<EventItem[]>([]);
     const [loading, setLoading] = useState(true);
 
+    console.log(events, '?event');
     useEffect(() => {
         const fetchEvents = async () => {
             setLoading(true);
@@ -61,7 +68,9 @@ const Home: NextPage = () => {
                 const items: EventItem[] = json.items.map((item) => ({
                     ...item,
                     image_urls:
-                        typeof item.image_urls === 'string' ? JSON.parse(item.image_urls) : item.image_urls || [],
+                        typeof item.image_urls === 'string'
+                            ? JSON.parse(item.image_urls)
+                            : (item.image_urls as ImageUrls) || {},
                     speaker: Array.isArray(item.speaker) ? item.speaker : item.speaker ? [item.speaker] : [],
                 }));
 
@@ -77,16 +86,6 @@ const Home: NextPage = () => {
         fetchEvents();
     }, []);
 
-    const formatDate = (dateString: string) => {
-        if (!dateString) return '';
-        const date = new Date(dateString);
-        return date.toLocaleDateString('ko-KR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        });
-    };
-
     return (
         <div className="bg-white text-gray-800 font-sans">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,39 +99,19 @@ const Home: NextPage = () => {
                     <section className="my-12 md:my-16">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <Image
-                                    src="/assets/contentlogo1.png"
-                                    alt="강연"
-                                    width={40}
-                                    height={40}
-                                />
+                                <Image src="/assets/contentlogo1.png" alt="강연" width={40} height={40} />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">강연</span>
                             </div>
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <Image
-                                    src="/assets/contentlogo2.png"
-                                    alt="팝업"
-                                    width={40}
-                                    height={40}
-                                />
+                                <Image src="/assets/contentlogo2.png" alt="팝업" width={40} height={40} />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">팝업</span>
                             </div>
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <Image
-                                    src="/assets/contentlogo3.png"
-                                    alt="원데이클래스"
-                                    width={40}
-                                    height={40}
-                                />
+                                <Image src="/assets/contentlogo3.png" alt="원데이클래스" width={40} height={40} />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">원데이클래스</span>
                             </div>
                             <div className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300">
-                                <Image
-                                    src="/assets/contentlogo4.png"
-                                    alt="공연"
-                                    width={40}
-                                    height={40}
-                                />
+                                <Image src="/assets/contentlogo4.png" alt="공연" width={40} height={40} />
                                 <span className="mt-2 text-sm font-semibold text-slate-700">공연</span>
                             </div>
                         </div>
@@ -147,14 +126,11 @@ const Home: NextPage = () => {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
                                 {events.map((item) => (
-                                    <Link
-                                        href={`/project/contents/${item.uid}`}
-                                        key={item.uid}
-                                    >
+                                    <Link href={`/project/contents/${item.uid}`} key={item.uid}>
                                         <div className="group cursor-pointer">
                                             <div className="relative overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300">
                                                 <img
-                                                    src={item.image_urls?.[0] || '/placeholder.jpg'}
+                                                    src={item.image_urls.poster_image || '/placeholder.jpg'}
                                                     alt={item.title || '이미지'}
                                                     className="w-full h-72 object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300"
                                                 />
@@ -173,10 +149,6 @@ const Home: NextPage = () => {
                                                 <h3 className="text-lg font-bold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors duration-300 truncate">
                                                     {item.title}
                                                 </h3>
-                                                {/* <p className="text-sm text-slate-500 mt-1.5">{item.place}</p>
-                                                <p className="text-sm text-slate-500 mt-1">
-                                                    {formatDate(item.start_date)}
-                                                </p> */}
                                             </div>
                                         </div>
                                     </Link>

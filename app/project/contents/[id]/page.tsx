@@ -9,11 +9,15 @@ interface Session {
     title: string;
     description: string;
 }
+
 interface EventDetail {
     uid: string;
     title: string;
     description: string;
-    image_urls: string[];
+    image_urls: {
+        poster_image?: string;
+        event_photos: string[];
+    };
     speaker: string[];
     manager: string;
     start_date: string;
@@ -21,12 +25,19 @@ interface EventDetail {
     project_time: string;
     place: string;
     sessions: Session[];
+    application_url?: string;
 }
+
 interface RawEvent {
     uid: string;
     title: string;
     description: string;
-    image_urls: string | string[];
+    image_urls:
+        | string
+        | {
+              poster_image?: string;
+              event_photos?: string | string[];
+          };
     speaker: string | string[];
     manager: string;
     start_date: string;
@@ -34,6 +45,7 @@ interface RawEvent {
     project_time: string;
     place: string;
     sessions: Session[];
+    application_url?: string;
 }
 
 export default function LectureDetailPage() {
@@ -63,18 +75,43 @@ export default function LectureDetailPage() {
                 if (!res2.ok) throw new Error('Failed to fetch events list');
                 const datas: { items: RawEvent[] } = await res2.json();
 
-                const parseEventData = (item: RawEvent): EventDetail => ({
-                    ...item,
-                    image_urls:
-                        typeof item.image_urls === 'string' ? JSON.parse(item.image_urls) : item.image_urls || [],
-                    speaker: Array.isArray(item.speaker) ? item.speaker : item.speaker ? [item.speaker] : [],
-                    manager: item.manager || '',
-                    start_date: item.start_date || '',
-                    end_date: item.end_date || '',
-                    project_time: item.project_time || '',
-                    place: item.place || '',
-                    sessions: item.sessions || [],
-                });
+                const parseEventData = (item: RawEvent): EventDetail => {
+                    const parsedImageUrls: { poster_image?: string; event_photos: string[] } = { event_photos: [] };
+
+                    if (typeof item.image_urls === 'string') {
+                        try {
+                            const parsed = JSON.parse(item.image_urls);
+                            parsedImageUrls.poster_image = parsed.poster_image;
+                            parsedImageUrls.event_photos = Array.isArray(parsed.event_photos)
+                                ? parsed.event_photos
+                                : parsed.event_photos
+                                ? JSON.parse(parsed.event_photos)
+                                : [];
+                        } catch (e) {
+                            console.error('Failed to parse image_urls string:', e);
+                        }
+                    } else if (item.image_urls && typeof item.image_urls === 'object') {
+                        parsedImageUrls.poster_image = item.image_urls.poster_image;
+                        parsedImageUrls.event_photos = Array.isArray(item.image_urls.event_photos)
+                            ? item.image_urls.event_photos
+                            : item.image_urls.event_photos
+                            ? JSON.parse(item.image_urls.event_photos as string)
+                            : [];
+                    }
+
+                    return {
+                        ...item,
+                        image_urls: parsedImageUrls,
+                        speaker: Array.isArray(item.speaker) ? item.speaker : item.speaker ? [item.speaker] : [],
+                        manager: item.manager || '',
+                        start_date: item.start_date || '',
+                        end_date: item.end_date || '',
+                        project_time: item.project_time || '',
+                        place: item.place || '',
+                        sessions: item.sessions || [],
+                        application_url: item.application_url || '',
+                    };
+                };
 
                 setEvent(parseEventData(data));
                 setEvents(datas.items.map(parseEventData));
@@ -92,13 +129,13 @@ export default function LectureDetailPage() {
     }
 
     const prevImage = () => {
-        if (!event.image_urls || event.image_urls.length === 0) return;
-        setCurrentImageIndex((prev) => (prev === 0 ? event.image_urls.length - 1 : prev - 1));
+        if (!event.image_urls.event_photos || event.image_urls.event_photos.length === 0) return;
+        setCurrentImageIndex((prev) => (prev === 0 ? event.image_urls.event_photos.length - 1 : prev - 1));
     };
 
     const nextImage = () => {
-        if (!event.image_urls || event.image_urls.length === 0) return;
-        setCurrentImageIndex((prev) => (prev === event.image_urls.length - 1 ? 0 : prev + 1));
+        if (!event.image_urls.event_photos || event.image_urls.event_photos.length === 0) return;
+        setCurrentImageIndex((prev) => (prev === event.image_urls.event_photos.length - 1 ? 0 : prev + 1));
     };
 
     const formatDate = () => {
@@ -124,6 +161,17 @@ export default function LectureDetailPage() {
                 <div className="relative flex flex-col md:flex-row gap-8 lg:gap-12">
                     <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-24 h-full self-start">
                         <section className="bg-gray-50 rounded-lg p-6 space-y-5">
+                            {/* Poster Image Section */}
+                            {event.image_urls.poster_image && (
+                                <div className="mb-6 rounded-lg overflow-hidden">
+                                    <img
+                                        src={event.image_urls.poster_image}
+                                        alt={`${event.title} Poster`}
+                                        className="w-full h-auto object-cover"
+                                    />
+                                </div>
+                            )}
+
                             <div>
                                 <span className="bg-black text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 inline-block">
                                     강연
@@ -144,7 +192,16 @@ export default function LectureDetailPage() {
                                     <span className="font-medium">{event.place || '장소 미정'}</span>
                                 </div>
                             </div>
-                            <button className="w-full bg-blue-500 text-white font-bold py-3 rounded-md hover:bg-blue-600 transition-colors duration-300">
+                            <button
+                                onClick={() => {
+                                    if (event.application_url) {
+                                        window.open(event.application_url, '_blank', 'noopener,noreferrer');
+                                    } else {
+                                        alert('신청 링크가 아직 등록되지 않았습니다.');
+                                    }
+                                }}
+                                className="w-full bg-blue-500 text-white font-bold py-3 rounded-md hover:bg-blue-600 transition-colors duration-300"
+                            >
                                 신청하기
                             </button>
                         </section>
@@ -159,15 +216,15 @@ export default function LectureDetailPage() {
                                     ◀
                                 </button>
                                 <div className="w-full h-64 md:h-96 bg-gray-100 rounded-lg overflow-hidden relative">
-                                    {event.image_urls?.length > 0 ? (
+                                    {event.image_urls.event_photos?.length > 0 ? (
                                         <img
-                                            src={event.image_urls[currentImageIndex]}
+                                            src={event.image_urls.event_photos[currentImageIndex]}
                                             alt={event.title}
                                             className="w-full h-full object-cover"
                                         />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center text-gray-500 bg-gray-200">
-                                            이미지 없음
+                                            이벤트 사진 없음
                                         </div>
                                     )}
                                 </div>
@@ -220,15 +277,12 @@ export default function LectureDetailPage() {
                                     ?.filter((e) => e.uid !== event.uid)
                                     .slice(0, 4)
                                     .map((e) => (
-                                        <Link
-                                            key={e.uid}
-                                            href={`/project/contents/${e.uid}`}
-                                        >
+                                        <Link key={e.uid} href={`/project/contents/${e.uid}`}>
                                             <div className="cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                                                 <div className="w-full h-40 sm:h-48 md:h-56 bg-gray-200 overflow-hidden rounded-t-2xl">
-                                                    {e.image_urls?.length > 0 ? (
+                                                    {e.image_urls.poster_image ? (
                                                         <img
-                                                            src={e.image_urls[0]}
+                                                            src={e.image_urls.poster_image}
                                                             alt={e.title}
                                                             className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                                                         />
