@@ -79,6 +79,7 @@ export default function LectureDetailPage() {
         if (!res2.ok) throw new Error("Failed to fetch events list");
         const datas: { items: RawEvent[] } = await res2.json();
 
+
         const parseEventData = (item: RawEvent): EventDetail => {
           const parsedImageUrls: {
             poster_image?: string;
@@ -276,7 +277,6 @@ export default function LectureDetailPage() {
                 </button>
               </div>
             </section>
-
             <section>
               <div className="border-b border-gray-200">
                 <nav className="flex space-x-8 -mb-px">
