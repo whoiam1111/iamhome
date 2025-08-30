@@ -8,59 +8,19 @@ import {
   ClockIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
-
-interface Session {
-  title: string;
-  description: string;
-}
-
-interface EventDetail {
-  uid: string;
-  title: string;
-  description: string;
-  image_urls: {
-    poster_image?: string;
-    event_photos: string[];
-  };
-  speaker: string[];
-  manager: string;
-  start_date: string;
-  end_date: string;
-  project_time: string;
-  place: string;
-  sessions: Session[];
-  application_url?: string;
-}
-
-interface RawEvent {
-  uid: string;
-  title: string;
-  description: string;
-  image_urls:
-    | string
-    | {
-        poster_image?: string;
-        event_photos?: string | string[];
-      };
-  speaker: string | string[];
-  manager: string;
-  start_date: string;
-  end_date: string;
-  project_time: string;
-  place: string;
-  sessions: Session[];
-  application_url?: string;
-}
+import { RawEvent, EventItem } from "../../../../lib/types/project";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import OhterClasses from "../../../../components/project/detail/OtherClasses";
 
 export default function LectureDetailPage() {
   const params = useParams();
   const id = params?.id;
-  const [event, setEvent] = useState<EventDetail | null>(null);
-  const [events, setEvents] = useState<EventDetail[] | null>(null);
+  const [event, setEvent] = useState<EventItem | null>(null);
+  const [events, setEvents] = useState<EventItem[] | null>(null);
   const [activeTab, setActiveTab] = useState("클래스 소개");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const tabs = ["클래스 소개", "강사 및 스태프"];
+  const tabs = ["클래스 소개", "크리에이터"];
 
   useEffect(() => {
     if (!id) return;
@@ -79,8 +39,7 @@ export default function LectureDetailPage() {
         if (!res2.ok) throw new Error("Failed to fetch events list");
         const datas: { items: RawEvent[] } = await res2.json();
 
-
-        const parseEventData = (item: RawEvent): EventDetail => {
+        const parseEventData = (item: RawEvent): EventItem => {
           const parsedImageUrls: {
             poster_image?: string;
             event_photos: string[];
@@ -140,7 +99,9 @@ export default function LectureDetailPage() {
 
   if (!event) {
     return (
-      <div className="text-center py-20 font-semibold">불러오는 중...</div>
+      <div className="text-center py-20 font-semibold animate-pulse">
+        불러오는 중...
+      </div>
     );
   }
 
@@ -151,7 +112,7 @@ export default function LectureDetailPage() {
     )
       return;
     setCurrentImageIndex((prev) =>
-      prev === 0 ? event.image_urls.event_photos.length - 1 : prev - 1
+      prev === 0 ? event.image_urls.event_photos!.length - 1 : prev - 1
     );
   };
 
@@ -162,7 +123,7 @@ export default function LectureDetailPage() {
     )
       return;
     setCurrentImageIndex((prev) =>
-      prev === event.image_urls.event_photos.length - 1 ? 0 : prev + 1
+      prev === event.image_urls.event_photos!.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -186,12 +147,14 @@ export default function LectureDetailPage() {
   return (
     <div className="bg-white text-gray-800">
       <main className="max-w-screen-xl mx-auto px-4 py-8 md:py-12">
-        <p className="text-sm text-blue-500 font-semibold mb-6">
-          History Who I am
+        <p className="flex items-center gap-1 text-base md:text-lg text-blue-500 font-semibold mb-6">
+          <Link href={"/project/contents"}>Contents</Link>
+          <ChevronRightIcon className="size-4" />
+          <span className="text-gray-700">{event.title}</span>
         </p>
         <div className="relative flex flex-col md:flex-row gap-8 lg:gap-12">
-          <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-24 h-full self-start">
-            <section className="bg-gray-50 rounded-lg p-6 space-y-5">
+          <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-10 h-full self-start">
+            <section className="bg-gray-100 rounded-lg p-6 space-y-5">
               {/* Poster Image Section */}
               {event.image_urls.poster_image && (
                 <div className="mb-6 rounded-lg overflow-hidden">
@@ -202,7 +165,6 @@ export default function LectureDetailPage() {
                   />
                 </div>
               )}
-
               <div>
                 <span className="bg-black text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 inline-block">
                   강연
@@ -257,9 +219,9 @@ export default function LectureDetailPage() {
                   ◀
                 </button>
                 <div className="w-full h-64 md:h-96 bg-gray-100 rounded-lg overflow-hidden relative">
-                  {event.image_urls.event_photos?.length > 0 ? (
+                  {event.image_urls.event_photos!.length > 0 ? (
                     <img
-                      src={event.image_urls.event_photos[currentImageIndex]}
+                      src={event.image_urls.event_photos![currentImageIndex]}
                       alt={event.title}
                       className="w-full h-full object-cover"
                     />
@@ -284,7 +246,7 @@ export default function LectureDetailPage() {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`py-4 px-1 text-base whitespace-nowrap ${
+                      className={`py-4 px-1 text-base whitespace-nowrap cursor-pointer ${
                         activeTab === tab
                           ? "border-b-2 border-blue-500 font-bold text-blue-500"
                           : "border-transparent text-gray-500 hover:text-black"
@@ -302,7 +264,7 @@ export default function LectureDetailPage() {
                       "클래스 소개 내용이 여기에 표시됩니다."}
                   </p>
                 )}
-                {activeTab === "강사 및 스태프" && (
+                {activeTab === "크리에이터" && (
                   <div className="space-y-12">
                     <SpeakerSection speakers={event.speaker} />
                     <StaffSection manager={event.manager} />
@@ -310,45 +272,8 @@ export default function LectureDetailPage() {
                 )}
               </div>
             </section>
-
             <section>
-              <h2 className="text-xl font-bold mb-5">Other Class</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                {events
-                  ?.filter((e) => e.uid !== event.uid)
-                  .slice(0, 4)
-                  .map((e) => (
-                    <Link key={e.uid} href={`/project/contents/${e.uid}`}>
-                      <div className="cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <div className="w-full h-40 sm:h-48 md:h-56 bg-gray-200 overflow-hidden rounded-t-2xl">
-                          {e.image_urls.poster_image ? (
-                            <img
-                              src={e.image_urls.poster_image}
-                              alt={e.title}
-                              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-500">
-                              이미지 없음
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="p-3 bg-white">
-                          <p className="text-sm font-semibold text-gray-800 truncate">
-                            {e.title}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-
-                {events?.filter((e) => e.uid !== event.uid).length === 0 && (
-                  <p className="text-gray-500 text-sm col-span-4">
-                    다른 클래스가 없습니다.
-                  </p>
-                )}
-              </div>
+              <OhterClasses events={events!} eventId={event.uid} />
             </section>
           </div>
         </div>
