@@ -2,7 +2,6 @@
 
 "use client"; // 클라이언트 컴포넌트 선언
 
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
@@ -10,43 +9,20 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { BannerItem } from "../lib/types/project";
+import { BOY } from "../lib/constants/image_path";
 
-// 슬라이더에 들어갈 데이터 (이미지 URL 등은 실제 데이터로 교체하세요)
-const sliderItems = [
-  {
-    title: "Who I am",
-    imageUrl:
-      "https://images.unsplash.com/photo-1531384370597-859e13e1d6b6?w=800&q=80",
-  },
-  {
-    title: "I am class",
-    imageUrl:
-      "https://images.unsplash.com/photo-1504208434309-cb69f4c42634?w=800&q=80",
-  },
-  {
-    title: "새로운 이벤트",
-    imageUrl:
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&q=80",
-  },
-  {
-    title: "공연 안내",
-    imageUrl:
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",
-  },
-  {
-    title: "팝업 스토어",
-    imageUrl:
-      "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=80",
-  },
-  {
-    title: "원데이 클래스",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
-  },
-];
+interface MainsliderProps {
+  banners: BannerItem[];
+}
 
-export default function MainSlider() {
-  const [currentIndex, setCurrentIndex] = React.useState(1);
+export default function MainSlider({ banners }: MainsliderProps) {
+  // console.log("check banner", banners);
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const router = useRouter();
 
   return (
     <div className="relative group">
@@ -61,18 +37,35 @@ export default function MainSlider() {
         loop={true}
         onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
       >
-        {sliderItems.map((item, index) => (
-          <SwiperSlide key={index}>
+        {banners.length != 0 ? (
+          banners.map((item, index) => (
+            <SwiperSlide key={item.uid}>
+              <div
+                className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg cursor-pointer"
+                onClick={() => router.push(`/project/contents/${item.uid}`)}
+              >
+                <Image
+                  src={item.banner_image_url}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  priority={index < 2}
+                />
+              </div>
+            </SwiperSlide>
+          ))
+        ) : (
+          <SwiperSlide>
             <div className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg">
-              <img
-                src={item.imageUrl}
-                alt={item.title}
-                className="w-full h-full object-cover rounded-lg"
+              <Image
+                src={BOY}
+                alt={"준비중입니다"}
+                fill
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-20 rounded-lg"></div>
             </div>
           </SwiperSlide>
-        ))}
+        )}
       </Swiper>
 
       {/* 커스텀 네비게이션 버튼 (마우스 올렸을 때 보임) */}
@@ -110,9 +103,11 @@ export default function MainSlider() {
       </div>
 
       {/* 페이지 번호 표시 */}
-      <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white text-sm px-3 py-1 rounded-full z-10">
-        {currentIndex} / {sliderItems.length}
-      </div>
+      {banners.length != 0 && (
+        <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white text-sm px-3 py-1 rounded-full z-10">
+          {currentIndex} / {banners.length}
+        </div>
+      )}
     </div>
   );
 }
