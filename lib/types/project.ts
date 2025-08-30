@@ -3,6 +3,11 @@ export interface ImageUrls {
   poster_image?: string;
 }
 
+interface Session {
+  title: string;
+  description: string;
+}
+
 export interface RawEvent {
   PK: string;
   SK: string;
@@ -16,13 +21,14 @@ export interface RawEvent {
   place: string;
   project_category: string;
   project_time: string;
-  sessions: unknown[];
+  sessions: Session[];
   speaker: string | string[];
   staff: string;
   start_date: string;
   title: string;
   uid: string;
   updated_at: string;
+  application_url?: string;
 }
 
 export interface EventItem extends Omit<RawEvent, "image_urls" | "speaker"> {
