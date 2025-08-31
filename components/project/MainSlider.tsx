@@ -2,18 +2,18 @@
 
 "use client"; // 클라이언트 컴포넌트 선언
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { BannerItem } from "../../lib/types/project";
+import { BOY } from "../../lib/constants/image_path";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Swiper 필수 스타일시트
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useState } from "react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { BannerItem } from "../lib/types/project";
-import { BOY } from "../lib/constants/image_path";
 
 interface MainsliderProps {
   banners: BannerItem[];
@@ -69,14 +69,19 @@ export default function MainSlider({ banners }: MainsliderProps) {
       </Swiper>
 
       {/* 커스텀 네비게이션 버튼 (마우스 올렸을 때 보임) */}
-      <div className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div
+        className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer 
+      text-black opacity-0 group-hover:opacity-80 transition-opacity duration-300
+      bg-white rounded-full p-2 
+      "
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-8 h-8"
+          className="w-7 h-7"
         >
           <path
             strokeLinecap="round"
@@ -85,14 +90,19 @@ export default function MainSlider({ banners }: MainsliderProps) {
           />
         </svg>
       </div>
-      <div className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div
+        className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer 
+      text-black opacity-0 group-hover:opacity-80 transition-opacity duration-300
+      bg-white rounded-full p-2 
+      "
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-8 h-8"
+          className="w-7 h-7"
         >
           <path
             strokeLinecap="round"

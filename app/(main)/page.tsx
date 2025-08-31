@@ -47,7 +47,7 @@ export default function FirstLayer() {
   return (
     <div className={`w-full h-full flex flex-col items-center`}>
       {/* Hero Section */}
-      <div className="relative flex justify-center items-center h-screen sm:w-full">
+      <section className="relative flex justify-center items-center h-screen sm:w-full">
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -76,11 +76,11 @@ export default function FirstLayer() {
             className="size-8 sm:size-10 md:size-14 text-white animate-[bounce_1.5s_ease-in-out_infinite] cursor-pointer"
           />
         </div>
-      </div>
+      </section>
 
       {/* Problem Section */}
       <FadeInSection>
-        <div
+        <section
           ref={nextSectionRef}
           className="w-full flex flex-col items-center bg-gray-50 py-30 md:py-50"
         >
@@ -111,7 +111,7 @@ export default function FirstLayer() {
                 <span>삶의 방향에 대한 불안감을 경험하는 청년들의 증가</span>
                 <span>...</span>
               </p>
-              <p className="font-semibold flex flex-col text-xl sm:text-2xl text-neutral-700">
+              <p className="font-semibold flex flex-col text-xl tracking-tight sm:text-2xl text-neutral-700">
                 이런 문제를 경험하고 있다면 I AM을 만날 때입니다.
               </p>
             </div>
@@ -121,7 +121,7 @@ export default function FirstLayer() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </FadeInSection>
 
       {/* Solutions */}
@@ -149,7 +149,7 @@ export default function FirstLayer() {
 
       {/* Data Section */}
       <FadeInSection>
-        <div className="w-full bg-gray-50 py-24 md:py-32">
+        <section className="w-full bg-gray-50 py-24 md:py-32">
           <div
             className="px-6 w-full mx-auto lg:w-[1024px] flex flex-col gap-12 
             text-gray-800"
@@ -181,12 +181,12 @@ export default function FirstLayer() {
             </div>
             <div className="font-light">※ 2024년 12월 기준</div>
           </div>
-        </div>
+        </section>
       </FadeInSection>
 
       {/* Rolling Carousel */}
       <FadeInSection>
-        <div className="w-full flex flex-col items-center py-30">
+        <section className="w-full flex flex-col items-center py-30">
           <div className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-5 text-2xl md:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-8 text-neutral-800">
             <span>I AM은 다양한 컨텐츠를 통해</span>
             <span> 더 나은 세상을 만들어 갑니다.</span>
@@ -200,12 +200,12 @@ export default function FirstLayer() {
             <ArrowRightIcon className="size-3 sm:size-4" />
           </div>
           <RollingCarousel />
-        </div>
+        </section>
       </FadeInSection>
 
       {/* CTA Section */}
       <FadeInSection>
-        <div
+        <section
           className={`w-full p-12 sm:p-24 mb-8 flex flex-col gap-5 items-center text-white text-shadow-sm
                       bg-[url("https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/c1b33447-6342-4192-3cee-1e76f8f80800/public")]
                       bg-cover bg-center`}
@@ -220,7 +220,7 @@ export default function FirstLayer() {
             프로그램 보러가기
             <ArrowRightIcon className="size-3 sm:size-4" />
           </div>
-        </div>
+        </section>
       </FadeInSection>
     </div>
   );
