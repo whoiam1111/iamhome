@@ -55,7 +55,7 @@ export default function WhoIAmPage() {
       </FadeInSection>
 
       {/* Gain from Who I AM */}
-      <section className="py-20 bg-gray-50 w-full">
+      <section className="py-20 bg-gray-100 w-full">
         <FadeInSection>
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl md:text-2xl font-serif italic text-black text-center mb-4">
@@ -191,7 +191,7 @@ export default function WhoIAmPage() {
       </FadeInSection>
 
       {/* Reviews */}
-      <section className="w-full bg-gray-50 py-20 md:py-24">
+      <section className="w-full bg-gray-100 py-20 md:py-24">
         <FadeInSection>
           <h2 className="text-center text-xl md:text-2xl font-serif italic text-black">
             수강 후기

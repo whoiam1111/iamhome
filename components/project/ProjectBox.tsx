@@ -1,22 +1,10 @@
 import Link from "next/link";
 import { EventItem } from "../../lib/types/project";
+import { getCategoryStyle } from "../../lib/utils/get_category";
 
 interface ProjectItemProps {
   item: EventItem;
 }
-
-const categoryStyles: { [key: string]: string } = {
-  강연: "bg-blue-500 text-white",
-  팝업: "bg-rose-500 text-white",
-  테마카페: "bg-rose-500 text-white",
-  원데이클래스: "bg-amber-500 text-white",
-  프로그램: "bg-amber-500 text-white",
-  공연: "bg-teal-500 text-white",
-  default: "bg-slate-500 text-white",
-};
-const getCategoryStyle = (category: string) => {
-  return categoryStyles[category] || categoryStyles.default;
-};
 
 export default function ProjectBox({ item }: ProjectItemProps) {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MainSlider from "../../../components/MainSlider";
+import MainSlider from "../../../components/project/MainSlider";
 import {
   BannerItem,
   EventItem,
