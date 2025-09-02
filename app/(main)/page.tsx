@@ -88,7 +88,7 @@ export default function FirstLayer() {
             <div>
               <h1
                 className="text-3xl text-neutral-800 md:text-5xl font-bold mb-8
-              whitespace-pre-wrap sm:whitespace-normal leading-snug tracking-tight"
+              whitespace-pre-wrap sm:whitespace-normal leading-snug tracking-tighter"
               >
                 당신은{" "}
                 <span className="text-rose-500">&apos;진짜 나&apos;</span>의
@@ -111,7 +111,7 @@ export default function FirstLayer() {
                 <span>삶의 방향에 대한 불안감을 경험하는 청년들의 증가</span>
                 <span>...</span>
               </p>
-              <p className="font-semibold flex flex-col text-xl tracking-tight sm:text-2xl text-neutral-700">
+              <p className="font-semibold flex flex-col text-xl tracking-tighter sm:text-2xl text-neutral-700">
                 이런 문제를 경험하고 있다면 I AM을 만날 때입니다.
               </p>
             </div>

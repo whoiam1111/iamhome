@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { RawEvent, EventItem } from "../../../../lib/types/project";
+import { EventItem } from "../../../../lib/types/project";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import OhterClasses from "../../../../components/project/detail/OtherClasses";
 import ProjectInfo from "../../../../components/project/detail/ProjectInfo";
 import DetailSlider from "../../../../components/project/detail/DetailSlider";
+import { getOneProject, getProjects } from "../../../../lib/api/project";
 
 export default function LectureDetailPage() {
   const params = useParams();
@@ -18,72 +19,70 @@ export default function LectureDetailPage() {
 
   const tabs = ["클래스 소개", "크리에이터"];
 
+  console.log("check param", id);
+
   useEffect(() => {
     if (!id) return;
     async function fetchEvent() {
       try {
         const eventId = Array.isArray(id) ? id[0] : id;
-        const res = await fetch(
-          `https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events/${eventId}`
-        );
+        const res = await getOneProject(eventId!);
         if (!res.ok) throw new Error("Failed to fetch event data");
-        const data: RawEvent = await res.json();
+        const data = await res.json();
 
-        const res2 = await fetch(
-          "https://iphzyiiv62.execute-api.ap-northeast-2.amazonaws.com/prod/api/v1/events?homepage=IAM&limit=100"
-        );
+        const res2 = await getProjects();
         if (!res2.ok) throw new Error("Failed to fetch events list");
-        const datas: { items: RawEvent[] } = await res2.json();
+        const datas = await res2.json();
 
-        const parseEventData = (item: RawEvent): EventItem => {
-          const parsedImageUrls: {
-            poster_image?: string;
-            event_photos: string[];
-          } = { event_photos: [] };
+        // const parseEventData = (item: RawEvent): EventItem => {
+        //   const parsedImageUrls: {
+        //     poster_image?: string;
+        //     event_photos: string[];
+        //   } = { event_photos: [] };
 
-          if (typeof item.image_urls === "string") {
-            try {
-              const parsed = JSON.parse(item.image_urls);
-              parsedImageUrls.poster_image = parsed.poster_image;
-              parsedImageUrls.event_photos = Array.isArray(parsed.event_photos)
-                ? parsed.event_photos
-                : parsed.event_photos
-                ? JSON.parse(parsed.event_photos)
-                : [];
-            } catch (e) {
-              console.error("Failed to parse image_urls string:", e);
-            }
-          } else if (item.image_urls && typeof item.image_urls === "object") {
-            parsedImageUrls.poster_image = item.image_urls.poster_image;
-            parsedImageUrls.event_photos = Array.isArray(
-              item.image_urls.event_photos
-            )
-              ? item.image_urls.event_photos
-              : item.image_urls.event_photos
-              ? JSON.parse(item.image_urls.event_photos as string)
-              : [];
-          }
+        //   if (typeof item.image_urls === "string") {
+        //     try {
+        //       const parsed = JSON.parse(item.image_urls);
+        //       parsedImageUrls.poster_image = parsed.poster_image;
+        //       parsedImageUrls.event_photos = Array.isArray(parsed.event_photos)
+        //         ? parsed.event_photos
+        //         : parsed.event_photos
+        //         ? JSON.parse(parsed.event_photos)
+        //         : [];
+        //     } catch (e) {
+        //       console.error("Failed to parse image_urls string:", e);
+        //     }
+        //   } else if (item.image_urls && typeof item.image_urls === "object") {
+        //     parsedImageUrls.poster_image = item.image_urls.poster_image;
+        //     parsedImageUrls.event_photos = Array.isArray(
+        //       item.image_urls.event_photos
+        //     )
+        //       ? item.image_urls.event_photos
+        //       : item.image_urls.event_photos
+        //       ? JSON.parse(item.image_urls.event_photos as string)
+        //       : [];
+        //   }
 
-          return {
-            ...item,
-            image_urls: parsedImageUrls,
-            speaker: Array.isArray(item.speaker)
-              ? item.speaker
-              : item.speaker
-              ? [item.speaker]
-              : [],
-            manager: item.manager || "",
-            start_date: item.start_date || "",
-            end_date: item.end_date || "",
-            project_time: item.project_time || "",
-            place: item.place || "",
-            sessions: item.sessions || [],
-            application_url: item.application_url || "",
-          };
-        };
+        //   return {
+        //     ...item,
+        //     image_urls: parsedImageUrls,
+        //     speaker: Array.isArray(item.speaker)
+        //       ? item.speaker
+        //       : item.speaker
+        //       ? [item.speaker]
+        //       : [],
+        //     manager: item.manager || "",
+        //     start_date: item.start_date || "",
+        //     end_date: item.end_date || "",
+        //     project_time: item.project_time || "",
+        //     place: item.place || "",
+        //     sessions: item.sessions || [],
+        //     application_url: item.application_url || "",
+        //   };
+        // };
 
-        setEvent(parseEventData(data));
-        setEvents(datas.items.map(parseEventData));
+        setEvent(data);
+        setEvents(datas);
       } catch (error) {
         console.error(error);
         setEvent(null);
@@ -114,12 +113,12 @@ export default function LectureDetailPage() {
         </aside>
         <div className="md:w-2/3 lg:w-3/4 flex flex-col gap-16">
           <section>
-            <DetailSlider images={event.image_urls.event_photos!} />
+            <DetailSlider images={event.image_urls} />
           </section>
           <section>
             <div className="border-b border-gray-200">
               <nav className="flex space-x-8 -mb-px">
-                {event.speaker.length > 0 || event.manager.length > 0 ? (
+                {/* {event.speaker.length > 0 || event.manager.length > 0 ? (
                   tabs.map((tab) => (
                     <button
                       key={tab}
@@ -141,7 +140,7 @@ export default function LectureDetailPage() {
                   >
                     클래스 소개
                   </button>
-                )}
+                )} */}
               </nav>
             </div>
             <div className="pt-8 min-h-[150px]">
@@ -151,7 +150,7 @@ export default function LectureDetailPage() {
                     "클래스 소개 내용이 여기에 표시됩니다."}
                 </p>
               )}
-              {activeTab === "크리에이터" && (
+              {/* {activeTab === "크리에이터" && (
                 <div className="space-y-12">
                   {event.speaker.length > 0 && (
                     <SpeakerSection speakers={event.speaker} />
@@ -160,7 +159,7 @@ export default function LectureDetailPage() {
                     <StaffSection manager={event.manager} />
                   )}
                 </div>
-              )}
+              )} */}
             </div>
           </section>
           <section>

@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from "react";
 import MainSlider from "../../../components/project/MainSlider";
-import {
-  BannerItem,
-  EventItem,
-  ImageUrls,
-  RawEvent,
-} from "../../../lib/types/project";
+import { BannerItem, EventItem } from "../../../lib/types/project";
 import { getProjects } from "../../../lib/api/project";
 import ProjectCategories from "../../../components/project/ProjectCategories";
 import ProjectBox from "../../../components/project/ProjectBox";
@@ -24,24 +19,24 @@ export default function ProjectPage() {
       setLoading(true);
       try {
         const res = await getProjects();
-        const json: { items: RawEvent[] } = await res.json();
+        const items: EventItem[] = await res.json();
 
-        const items: EventItem[] = json.items.map((item) => ({
-          ...item,
-          image_urls:
-            typeof item.image_urls === "string"
-              ? JSON.parse(item.image_urls)
-              : (item.image_urls as ImageUrls) || {},
-          speaker: Array.isArray(item.speaker)
-            ? item.speaker
-            : item.speaker
-            ? [item.speaker]
-            : [],
-        }));
+        // const items: EventItem[] = json.items.map((item) => ({
+        //   ...item,
+        //   image_urls:
+        //     typeof item.image_urls === "string"
+        //       ? JSON.parse(item.image_urls)
+        //       : (item.image_urls as ImageUrls) || {},
+        //   speaker: Array.isArray(item.speaker)
+        //     ? item.speaker
+        //     : item.speaker
+        //     ? [item.speaker]
+        //     : [],
+        // }));
 
         // 배너 프로젝트 추출
         const bannerItem: BannerItem[] = [];
-        items.forEach((item) => {
+        items.forEach((item: EventItem) => {
           const regex = /<!--FEATURED:\s*(\{[\s\S]*?\})\s*-->/;
           const match = item.description.match(regex);
 

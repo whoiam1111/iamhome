@@ -1,40 +1,48 @@
-export interface ImageUrls {
-  event_photos?: string[];
-  poster_image?: string;
-}
-
 interface Session {
   title: string;
   description: string;
 }
 
-export interface RawEvent {
+interface Participants {
+  manager: string[];
+  mc: string[];
+  performer: string[];
+  staff: string[];
+  speaker: string[];
+}
+
+export interface EventItem {
   PK: string;
   SK: string;
-  created_at: string;
+  uid: string;
   description: string;
   duration_type: string;
+  start_date: string;
   end_date: string;
   homepage: string;
-  image_urls: ImageUrls | string; // ✅ 수정
-  manager: string;
+  banner_image_url?: string;
+  featured_order?: string;
+  is_featured: boolean;
+  image_urls: string[]; // ✅ 수정
+  video_url: string;
+  poster_url: string;
   place: string;
   project_category: string;
   project_time: string;
   sessions: Session[];
-  speaker: string | string[];
-  staff: string;
-  start_date: string;
+  participants: Participants;
+  // manager: string;
+  // speaker: string | string[];
+  // staff: string;
   title: string;
-  uid: string;
+  apply_url?: string;
+  created_at: string;
   updated_at: string;
-  application_url?: string;
 }
 
-export interface EventItem extends Omit<RawEvent, "image_urls" | "speaker"> {
-  image_urls: ImageUrls; // ✅ 객체로 변환된 상태
-  speaker: string[];
-}
+// export interface EventItem extends Omit<RawEvent, "speaker"> {
+//   speaker: string[];
+// }
 
 export interface BannerItem {
   uid: string;
