@@ -20,7 +20,6 @@ interface MainsliderProps {
 }
 
 export default function MainSlider({ banners }: MainsliderProps) {
-  // console.log("check banner", banners);
   const [currentIndex, setCurrentIndex] = useState(1);
   const router = useRouter();
 
@@ -37,23 +36,25 @@ export default function MainSlider({ banners }: MainsliderProps) {
         loop={true}
         onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
       >
-        {banners.length != 0 ? (
-          banners.map((item, index) => (
-            <SwiperSlide key={item.uid}>
-              <div
-                className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg cursor-pointer"
-                onClick={() => router.push(`/project/contents/${item.uid}`)}
-              >
-                <Image
-                  src={item.banner_image_url}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  priority={index < 2}
-                />
-              </div>
-            </SwiperSlide>
-          ))
+        {banners.length > 0 ? (
+          banners
+            .sort((a, b) => a.featured_order - b.featured_order)
+            .map((item, index) => (
+              <SwiperSlide key={item.uid}>
+                <div
+                  className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg cursor-pointer"
+                  onClick={() => router.push(`/project/contents/${item.uid}`)}
+                >
+                  <Image
+                    src={item.banner_image_url}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    priority={index < 2}
+                  />
+                </div>
+              </SwiperSlide>
+            ))
         ) : (
           <SwiperSlide>
             <div className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg">

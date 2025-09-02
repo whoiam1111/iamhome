@@ -12,7 +12,7 @@ export default function ProjectBox({ item }: ProjectItemProps) {
       <div className="group cursor-pointer">
         <div className="relative overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300">
           <img
-            src={item.image_urls.poster_image}
+            src={item.poster_url}
             alt={`assets/history_whoiampreview_P_2`}
             className="w-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-300"
           />
@@ -31,6 +31,7 @@ export default function ProjectBox({ item }: ProjectItemProps) {
           <h3 className="text-lg font-bold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors duration-300 truncate">
             {item.title}
           </h3>
+          <p>{item.summary}</p>
         </div>
       </div>
     </Link>

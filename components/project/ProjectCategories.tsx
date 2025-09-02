@@ -14,7 +14,7 @@ export default function ProjectCategories({
         className="col-span-full md:col-span-1 flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors duration-300"
       >
         <Image
-          src="/assets/contentlogo1.png"
+          src="/assets/content_all.png"
           alt="강연"
           width={40}
           height={40}

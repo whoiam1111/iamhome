@@ -31,10 +31,10 @@ export default function ProjectInfo({ event }: ProjectInfoProps) {
   return (
     <div className="bg-gray-100 rounded-lg p-6 space-y-5">
       {/* Poster Image Section */}
-      {event.image_urls.poster_image && (
+      {event.poster_url && (
         <div className="mb-6 rounded-lg overflow-hidden">
           <img
-            src={event.image_urls.poster_image}
+            src={event.poster_url}
             alt={`${event.title} Poster`}
             className="w-full h-auto object-cover"
           />
@@ -70,8 +70,8 @@ export default function ProjectInfo({ event }: ProjectInfoProps) {
       </div>
       <button
         onClick={() => {
-          if (event.application_url) {
-            window.open(event.application_url, "_blank", "noopener,noreferrer");
+          if (event.apply_url) {
+            window.open(event.apply_url, "_blank", "noopener,noreferrer");
           } else {
             alert("신청 링크가 아직 등록되지 않았습니다.");
           }
