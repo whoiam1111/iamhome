@@ -1,9 +1,12 @@
 interface Session {
-  title: string;
+  number: number;
+  day_of_week: string;
+  start_time: string;
+  end_time: string;
   description: string;
 }
 
-interface Participants {
+export interface Participants {
   manager: string[];
   mc: string[];
   performer: string[];
@@ -15,27 +18,25 @@ export interface EventItem {
   PK: string;
   SK: string;
   uid: string;
-  description: string;
-  duration_type: string;
+  homepage: string;
+  title: string;
   start_date: string;
   end_date: string;
-  homepage: string;
-  banner_image_url?: string;
-  featured_order?: string;
-  is_featured: boolean;
-  image_urls: string[]; // ✅ 수정
-  video_url: string;
-  poster_url: string;
-  place: string;
-  project_category: string;
   project_time: string;
-  sessions: Session[];
+  project_category: string;
+  duration_type: string;
+  place: string;
   participants: Participants;
-  // manager: string;
-  // speaker: string | string[];
-  // staff: string;
-  title: string;
+  video_url: string;
+  description: string;
+  summary: string;
+  is_featured: boolean;
+  featured_order?: number;
+  image_urls: string[]; // ✅ 수정
+  poster_url: string;
+  banner_image_url?: string;
   apply_url?: string;
+  sessions: Session[];
   created_at: string;
   updated_at: string;
 }

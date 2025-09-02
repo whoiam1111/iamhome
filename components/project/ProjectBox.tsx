@@ -31,6 +31,7 @@ export default function ProjectBox({ item }: ProjectItemProps) {
           <h3 className="text-lg font-bold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors duration-300 truncate">
             {item.title}
           </h3>
+          <p>{item.summary}</p>
         </div>
       </div>
     </Link>

@@ -13,39 +13,26 @@ export default function ProjectPage() {
   const [banners, setBanners] = useState<BannerItem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  console.log(events, "?event");
+  // console.log(events, "?event");
   useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true);
       try {
         const res = await getProjects();
-        const items: EventItem[] = await res.json();
-
-        // const items: EventItem[] = json.items.map((item) => ({
-        //   ...item,
-        //   image_urls:
-        //     typeof item.image_urls === "string"
-        //       ? JSON.parse(item.image_urls)
-        //       : (item.image_urls as ImageUrls) || {},
-        //   speaker: Array.isArray(item.speaker)
-        //     ? item.speaker
-        //     : item.speaker
-        //     ? [item.speaker]
-        //     : [],
-        // }));
+        const { items } = await res.json();
 
         // 배너 프로젝트 추출
         const bannerItem: BannerItem[] = [];
         items.forEach((item: EventItem) => {
-          const regex = /<!--FEATURED:\s*(\{[\s\S]*?\})\s*-->/;
-          const match = item.description.match(regex);
-
-          if (match) {
-            const jsonString = match[1]; // 괄호로 캡처한 JSON 부분
-            const obj = JSON.parse(jsonString);
-            obj["title"] = item.title;
-            obj["uid"] = item.uid;
-            bannerItem.push(obj);
+          if (item.is_featured && item.banner_image_url) {
+            const data = {
+              uid: item.uid!,
+              title: item.title!,
+              featured_order: item.featured_order!,
+              banner_image_url: item.banner_image_url!,
+            };
+            // console.log("checkbanner", data);
+            bannerItem.push(data);
           }
         });
         // console.log("banner item", bannerItem);

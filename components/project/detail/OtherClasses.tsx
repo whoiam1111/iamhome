@@ -9,10 +9,10 @@ interface OtherClassesProps {
 export default function OhterClasses({ events, eventId }: OtherClassesProps) {
   return (
     <>
-      <div className="text-xl font-bold mb-5">Other Contents</div>
+      <div className="font-bold mb-5">I AM의 다른 행사들</div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-        {/* {events
-          ?.filter((e) => e.uid !== eventId)
+        {events
+          .filter((e) => e.uid !== eventId)
           .slice(0, 4)
           .map((e) => (
             <Link key={e.uid} href={`/project/contents/${e.uid}`}>
@@ -38,7 +38,7 @@ export default function OhterClasses({ events, eventId }: OtherClassesProps) {
                 </div>
               </div>
             </Link>
-          ))} */}
+          ))}
 
         {/* {events?.filter((e) => e.uid !== eventId).length === 0 && (
           <p className="text-gray-500 text-sm col-span-4">
