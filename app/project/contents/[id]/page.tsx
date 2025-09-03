@@ -10,6 +10,7 @@ import ProjectInfo from "../../../../components/project/detail/ProjectInfo";
 import DetailSlider from "../../../../components/project/detail/DetailSlider";
 import { getOneProject, getProjects } from "../../../../lib/api/project";
 import ParticipantsBox from "../../../../components/project/detail/ParticipantsBox";
+import LoadingSpinner from "../../../../components/common/LoadingSpinner";
 
 export default function LectureDetailPage() {
   const params = useParams();
@@ -45,15 +46,15 @@ export default function LectureDetailPage() {
 
   if (!event) {
     return (
-      <div className="text-center py-20 font-semibold animate-pulse">
-        불러오는 중...
+      <div className="w-screen h-[calc(100vh-340px)] flex justify-center">
+        <LoadingSpinner />
       </div>
     );
   }
 
   return (
     <main className="max-w-screen-xl mx-auto px-4 py-8 md:py-12 bg-white text-gray-800">
-      <p className="flex items-center gap-1 text-base md:text-lg text-blue-500 font-semibold mb-6">
+      <p className="flex items-center gap-1 text-base md:text-lg text-blue-600 font-semibold mb-6">
         <Link href={"/project/contents"}>Contents</Link>
         <ChevronRightIcon className="size-4" />
         <span className="text-gray-700">{event.title}</span>
@@ -62,7 +63,7 @@ export default function LectureDetailPage() {
         <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-10 h-full self-start">
           <ProjectInfo event={event} />
         </aside>
-        <div className="md:w-2/3 lg:w-3/4 flex flex-col gap-16">
+        <div className="md:w-2/3 lg:w-3/4 flex flex-col gap-10">
           <section>
             <DetailSlider images={event.image_urls} />
           </section>

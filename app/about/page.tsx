@@ -22,7 +22,7 @@ export default function About() {
       </div>
 
       {/* 1. Hero Section */}
-      <section className="flex flex-col w-full lg:w-[1024px] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
+      <section className="flex flex-col w-full lg:w-[64rem] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
         <FadeInSection>
           <div className="flex flex-col font-black text-[25px] md:text-[35px] lg:text-[50px] tracking-tight">
             <div>진짜 내가 되고 싶은 우리가 모여</div>
@@ -112,7 +112,7 @@ export default function About() {
       </FadeInSection>
 
       {/* 4. Program Section */}
-      <section className="flex flex-col items-center gap-5 w-full lg:w-[1024px] mb-16 sm:mb-24 px-4">
+      <section className="flex flex-col items-center gap-5 w-full lg:w-[64rem] mb-16 sm:mb-24 px-4">
         <FadeInSection>
           <div className="text-center text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
             우리가 하는 일
