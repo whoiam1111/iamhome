@@ -13,7 +13,7 @@ export default function Contact() {
       <div className="text-center text-sm sm:text-base mb-12 md:mb-16">
         우리의 가치와 함께하실 분들의 연락을 기다립니다.
       </div>
-      <div className="w-full lg:w-[1024px] flex mb-[50px] flex-col items-center gap-10">
+      <div className="w-full lg:w-[64rem] flex mb-[50px] flex-col items-center gap-10">
         <div className="w-full relative aspect-video">
           <Image
             src={BOY}

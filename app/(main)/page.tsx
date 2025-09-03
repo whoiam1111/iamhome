@@ -84,7 +84,7 @@ export default function FirstLayer() {
           ref={nextSectionRef}
           className="w-full flex flex-col items-center bg-gray-50 py-30 md:py-50"
         >
-          <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full lg:w-[1024px] px-6">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full lg:w-[64rem] px-6">
             <div>
               <h1
                 className="text-3xl text-neutral-800 md:text-5xl font-bold mb-8
@@ -151,7 +151,7 @@ export default function FirstLayer() {
       <FadeInSection>
         <section className="w-full bg-gray-50 py-24 md:py-32">
           <div
-            className="px-6 w-full mx-auto lg:w-[1024px] flex flex-col gap-12 
+            className="px-6 w-full mx-auto lg:w-[64rem] flex flex-col gap-12 
             text-gray-800"
           >
             <div className="flex flex-col justify-center mb-6 sm:mb-12">
