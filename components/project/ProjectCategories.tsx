@@ -38,25 +38,30 @@ export default function ProjectCategories({
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+    <div className="grid grid-cols-5 gap-3 md:gap-6 lg:gap-12">
+      {/* <div className="flex overflow-x-auto space-x-4"> */}
       {categoryData.map((category) => (
         <div
           key={category.id}
-          onClick={() => selectCategory(category.title)}
-          className={`col-span-full md:col-span-1 flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl 
-          hover:bg-slate-100 cursor-pointer transition-colors duration-300`}
+          className="flex flex-col items-center justify-center"
         >
-          <Image
-            src={category.img}
-            alt={category.title}
-            width={40}
-            height={40}
-          />
+          <div
+            onClick={() => selectCategory(category.title)}
+            className={`flex flex-col items-center justify-center p-4 md:p-6 lg:py-10 rounded-xl 
+          hover:bg-slate-100 cursor-pointer transition-colors duration-500 w-full
+          ${currentCategory === category.title ? "bg-slate-100" : "bg-slate-50"}
+          `}
+          >
+            <Image
+              src={category.img}
+              alt={category.title}
+              width={50}
+              height={50}
+            />
+          </div>
           <span
-            className={`mt-2 text-sm text-slate-700 ${
-              currentCategory === category.title
-                ? "font-bold bg-slate-100"
-                : "font-semibold"
+            className={`text-xs md:text-sm lg:text-base mt-2 md:mt-4 text-slate-700 transition-[font-weight] duration-500 ${
+              currentCategory === category.title ? "font-black" : "font-medium"
             }`}
           >
             {category.title}
