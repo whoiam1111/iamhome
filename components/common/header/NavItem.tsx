@@ -17,15 +17,21 @@ export default function NavItem({
   return (
     <a
       onClick={onClick}
-      className={`cursor-pointer transition-colors text-xs sm:text-sm
+      className={`cursor-pointer text-xs sm:text-sm
                 ${
                   isMainPage
                     ? "text-white hover:text-gray-300"
                     : "text-gray-500 hover:text-black"
                 } 
-                ${active ? "font-semibold underline" : ""}`}
+                `}
     >
-      {label}
+      {active ? (
+        <span className="font-semibold underline text-black transition-all duration-300">
+          {label}
+        </span>
+      ) : (
+        <span>{label}</span>
+      )}
     </a>
   );
 }

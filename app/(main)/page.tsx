@@ -47,9 +47,9 @@ export default function FirstLayer() {
   return (
     <div className={`w-full h-full flex flex-col items-center`}>
       {/* Hero Section */}
-      <section className="relative flex justify-center items-center h-screen sm:w-full">
+      <section className="relative flex justify-center items-center h-screen sm:w-full animate-fadein">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover "
           autoPlay
           muted
           loop
@@ -58,7 +58,7 @@ export default function FirstLayer() {
           <source src="/assets/main.mp4" type="video/mp4" />
         </video>
         <div
-          className={`absolute text-center text-white text-shadow-xs flex flex-col gap-1 animate-fadein tracking-tighter`}
+          className={`absolute text-center text-white text-shadow-xs flex flex-col gap-1 tracking-tighter`}
         >
           <div className="text-[clamp(1rem,_2vw,_1.7rem)]">
             배움이라는 나침반을 따라

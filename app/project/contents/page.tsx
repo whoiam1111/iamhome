@@ -7,6 +7,7 @@ import { getProjects } from "../../../lib/api/project";
 import ProjectCategories from "../../../components/project/ProjectCategories";
 import ProjectBox from "../../../components/project/ProjectBox";
 import LoadingSpinner from "../../../components/common/LoadingSpinner";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 
 export default function ProjectPage() {
   const [initialEvents, setInitialEvents] = useState<EventItem[]>([]);
@@ -61,8 +62,8 @@ export default function ProjectPage() {
       );
 
       setEvents(filtered);
-      selectCategory(category);
     }
+    setCurrentCategory(category);
   };
 
   if (loading)
@@ -74,10 +75,11 @@ export default function ProjectPage() {
 
   return (
     <main className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 bg-white text-gray-800 font-sans">
+      {/* 슬라이더 섹션 */}
       <section className="my-8 md:my-12">
         {banners.length > 0 ? (
           <div className="font-bold text-base sm:text-lg mb-4">
-            <span className="text-blue-600 mr-1">NOW</span>
+            <span className="text-rose-600 mr-1">NOW</span>
             <span className="text-gray-600"> 지금 신청 가능한 프로그램</span>
           </div>
         ) : (
@@ -86,24 +88,35 @@ export default function ProjectPage() {
             <span className="text-gray-600">프로그램을 준비하고 있습니다.</span>
           </div>
         )}
-
         <MainSlider banners={banners} />
       </section>
+
+      {/* 카테고리 섹션 */}
       <section className="my-12 md:my-16">
         <ProjectCategories
           selectCategory={selectCategory}
           currentCategory={currentCategory}
         />
       </section>
+
+      {/* 컨텐츠 섹션 */}
       <section className="my-12 md:my-16">
         <h2 className="text-2xl font-bold mb-6 text-slate-900">프로그램</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-          {events.length != 0 ? (
-            events.map((item) => <ProjectBox key={item.uid} item={item} />)
-          ) : (
-            <div>등록된 행사가 없습니다.</div>
-          )}
-        </div>
+        {events.length != 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            {events.map((item) => (
+              <ProjectBox key={item.uid} item={item} />
+            ))}
+          </div>
+        ) : (
+          <div
+            className="rounded-xl bg-gray-50 p-10 w-full text-gray-800 font-semibold
+          flex flex-col items-center gap-2"
+          >
+            <ExclamationTriangleIcon className="size-7" />
+            등록된 행사가 없습니다.
+          </div>
+        )}
       </section>
     </main>
   );
