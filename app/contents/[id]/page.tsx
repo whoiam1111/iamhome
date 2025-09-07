@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { EventItem } from "../../../../lib/types/project";
+import { EventItem } from "../../../lib/types/project";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import OhterClasses from "../../../../components/project/detail/OtherClasses";
-import ProjectInfo from "../../../../components/project/detail/ProjectInfo";
-import DetailSlider from "../../../../components/project/detail/DetailSlider";
-import { getOneProject, getProjects } from "../../../../lib/api/project";
-import ParticipantsBox from "../../../../components/project/detail/ParticipantsBox";
-import LoadingSpinner from "../../../../components/common/LoadingSpinner";
+import OhterClasses from "../../../components/project/detail/OtherClasses";
+import ProjectInfo from "../../../components/project/detail/ProjectInfo";
+import DetailSlider from "../../../components/project/detail/DetailSlider";
+import { getOneProject, getProjects } from "../../../lib/api/project";
+import ParticipantsBox from "../../../components/project/detail/ParticipantsBox";
+import LoadingSpinner from "../../../components/common/LoadingSpinner";
 
 export default function LectureDetailPage() {
   const params = useParams();
@@ -53,7 +53,10 @@ export default function LectureDetailPage() {
   }
 
   return (
-    <main className="max-w-screen-xl mx-auto px-4 py-8 md:py-12 bg-white text-gray-800">
+    <main
+      className="max-w-screen-xl mx-auto mt-[12rem] px-4 py-8 md:py-12 bg-white text-gray-800
+      animate-fadein [animation-duration:500ms]"
+    >
       <p className="flex items-center gap-1 text-base md:text-lg text-blue-600 font-semibold mb-6">
         <Link href={"/project/contents"}>Contents</Link>
         <ChevronRightIcon className="size-4" />

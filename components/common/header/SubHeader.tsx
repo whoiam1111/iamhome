@@ -39,7 +39,7 @@ export default function SubHeader() {
         }`}
     >
       <div className="flex justify-center items-center w-full xl:w-[80rem]">
-        <div className={`flex gap-2 sm:gap-10 sm:py-3 px-2 `}>
+        <div className={`flex gap-4 sm:gap-10 py-3 px-2 `}>
           <NavItem
             label="Home"
             active={pathname === "/"}
@@ -51,14 +51,14 @@ export default function SubHeader() {
             onClick={() => router.push("/about")}
           />
           <NavItem
-            label="Teams"
-            active={pathname.includes("/teams")}
-            onClick={() => router.push("/teams")}
+            label="Contents"
+            active={pathname.includes("/contents")}
+            onClick={() => router.push("/contents")}
           />
           <NavItem
-            label="Project"
-            active={pathname.includes("/project")}
-            onClick={() => router.push("/project/whoiam")}
+            label="WhoIAM"
+            active={pathname.includes("/whoiam")}
+            onClick={() => router.push("/whoiam")}
           />
           <NavItem
             label="Contact"

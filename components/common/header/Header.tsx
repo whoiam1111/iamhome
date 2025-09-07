@@ -46,14 +46,14 @@ export default function Header() {
           onClick={() => router.push("/about")}
         />
         <NavItem
-          label="Teams"
-          active={pathname.includes("/teams")}
-          onClick={() => router.push("/teams")}
+          label="Contents"
+          active={pathname.includes("/contents")}
+          onClick={() => router.push("/contents")}
         />
         <NavItem
-          label="Project"
-          active={pathname.includes("/project")}
-          onClick={() => router.push("/project/whoiam")}
+          label="WhoIAM"
+          active={pathname.includes("/whoiam")}
+          onClick={() => router.push("/whoiam")}
         />
         <NavItem
           label="Contact"

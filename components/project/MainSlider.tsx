@@ -43,7 +43,7 @@ export default function MainSlider({ banners }: MainsliderProps) {
               <SwiperSlide key={item.uid}>
                 <div
                   className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg cursor-pointer"
-                  onClick={() => router.push(`/project/contents/${item.uid}`)}
+                  onClick={() => router.push(`/contents/${item.uid}`)}
                 >
                   <Image
                     src={item.banner_image_url}

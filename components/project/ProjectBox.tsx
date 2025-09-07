@@ -8,7 +8,7 @@ interface ProjectItemProps {
 
 export default function ProjectBox({ item }: ProjectItemProps) {
   return (
-    <Link href={`/project/contents/${item.uid}`} key={item.uid}>
+    <Link href={`/contents/${item.uid}`} key={item.uid}>
       <div className="group cursor-pointer">
         <div className="relative overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300">
           <img
@@ -28,10 +28,10 @@ export default function ProjectBox({ item }: ProjectItemProps) {
           )}
         </div>
         <div className="mt-4 px-1">
-          <h3 className="text-lg font-bold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors duration-300 truncate">
+          <h3 className="text-base md:text-lg font-bold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors duration-300 truncate">
             {item.title}
           </h3>
-          <p>{item.summary}</p>
+          <p className="text-sm md:text-base">{item.summary}</p>
         </div>
       </div>
     </Link>
