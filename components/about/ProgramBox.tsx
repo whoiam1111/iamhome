@@ -17,7 +17,7 @@ export default function ProgramBox({
   return (
     <div
       onClick={() => router.push(`${path}`)}
-      className="rounded-[20px] shadow-md overflow-hidden cursor-pointer transition hover:bg-[#e7e7e7] md:w-1/2"
+      className="rounded-[20px] bg-white shadow-md overflow-hidden cursor-pointer transition hover:bg-[#e7e7e7] md:w-1/2"
     >
       <div className="relative aspect-video">
         <Image src={`${img}`} alt="program 1" fill className="object-cover" />

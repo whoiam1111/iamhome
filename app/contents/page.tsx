@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MainSlider from "../../../components/project/MainSlider";
-import { BannerItem, EventItem } from "../../../lib/types/project";
-import { getProjects } from "../../../lib/api/project";
-import ProjectCategories from "../../../components/project/ProjectCategories";
-import ProjectBox from "../../../components/project/ProjectBox";
-import LoadingSpinner from "../../../components/common/LoadingSpinner";
+import MainSlider from "../../components/project/MainSlider";
+import { BannerItem, EventItem } from "../../lib/types/project";
+import { getProjects } from "../../lib/api/project";
+import ProjectCategories from "../../components/project/ProjectCategories";
+import ProjectBox from "../../components/project/ProjectBox";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 
 export default function ProjectPage() {
@@ -74,7 +74,10 @@ export default function ProjectPage() {
     );
 
   return (
-    <main className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 bg-white text-gray-800 font-sans">
+    <main
+      className="max-w-screen-xl mx-auto mt-[12rem] px-4 sm:px-6 lg:px-8 bg-white text-gray-800 font-sans
+      animate-fadein [animation-duration:500ms]"
+    >
       {/* 슬라이더 섹션 */}
       <section className="my-8 md:my-12">
         {banners.length > 0 ? (
@@ -103,7 +106,7 @@ export default function ProjectPage() {
       <section className="my-12 md:my-16">
         <h2 className="text-2xl font-bold mb-6 text-slate-900">프로그램</h2>
         {events.length != 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-12">
             {events.map((item) => (
               <ProjectBox key={item.uid} item={item} />
             ))}

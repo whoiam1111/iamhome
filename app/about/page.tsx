@@ -8,6 +8,7 @@ import ProgramBox from "../../components/about/ProgramBox";
 import FadeInSection from "../../components/common/FadeInSection";
 import { ABOUT_MAIN } from "../../lib/constants/image_path";
 import { images } from "../../lib/constants/main";
+import TeamPapge from "../../components/about/teams/page";
 
 export default function About() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function About() {
         우리의 비전과 가치는 우리의 원동력입니다.
       </div>
 
-      {/* 1. Hero Section */}
+      {/* Hero Section */}
       <section className="flex flex-col w-full lg:w-[64rem] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
         <FadeInSection>
           <div className="flex flex-col font-black text-[25px] md:text-[35px] lg:text-[50px] tracking-tight">
@@ -51,7 +52,7 @@ export default function About() {
         </FadeInSection>
       </section>
 
-      {/* 2. Motive Section */}
+      {/* Motive Section */}
       <FadeInSection isMove={false}>
         <section className="flex flex-col items-center gap-3 sm:gap-5 w-full bg-gray-100 py-[100px] mb-[150px] px-4">
           <div className="text-[15px] font-bold md:text-[18px] lg:text-[20px]">
@@ -86,7 +87,7 @@ export default function About() {
         </section>
       </FadeInSection>
 
-      {/* 3. Vision Section */}
+      {/* Vision Section */}
       <FadeInSection>
         <section className="w-full flex flex-col items-center mb-[120px] sm:mb-[180px]">
           <div className="text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
@@ -95,7 +96,7 @@ export default function About() {
           <div className="text-[20px] font-black mb-[50px] md:text-[35px] lg:text-[40px] ">
             지혜와 연대, 더 좋은 세상을 향한 열망
           </div>
-          <div className="w-full lg:w-[1024px] grid grid-cols-3 justify-center gap-1 sm:gap-3 relative px-4">
+          <div className="w-full lg:w-[64rem] grid grid-cols-3 justify-center gap-1 sm:gap-3 relative px-4">
             {images.map((data, idx) => (
               <div
                 className="relative flex justify-center items-center text-gray-600 [&:nth-child(2)]:text-white"
@@ -111,39 +112,46 @@ export default function About() {
         </section>
       </FadeInSection>
 
-      {/* 4. Program Section */}
-      <section className="flex flex-col items-center gap-5 w-full lg:w-[64rem] mb-16 sm:mb-24 px-4">
-        <FadeInSection>
-          <div className="text-center text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
-            우리가 하는 일
-          </div>
-          <div className="text-center text-[20px] font-black mb-6 sm:mb-12 md:text-[35px] lg:text-[40px] ">
-            &lsquo;진짜 나&rsquo;를 발견하는 여정을 함께 해요.
-          </div>
-          <div className="flex gap-10 mb-5 flex-col md:flex-row">
-            {programInfo.map((program, idx) => (
-              <ProgramBox
-                key={idx}
-                path={program.path}
-                img={program.img}
-                title={program.title}
-                desc={program.desc}
-              />
-            ))}
-          </div>
-        </FadeInSection>
+      {/* Team Section */}
+      <FadeInSection>
+        <TeamPapge />
+      </FadeInSection>
 
-        {/* 5. More button */}
-        <FadeInSection isMove={false}>
-          <div
-            onClick={() => router.push("/project/contents")}
-            className="flex justify-center items-center gap-2 font-medium cursor-pointer hover:underline
-            text-[12px] md:text-[15px] lg:text-[18px]"
-          >
-            더 많은 프로그램 보기
-            <ArrowRightIcon className="size-3 sm:size-4" />
-          </div>
-        </FadeInSection>
+      {/* Program Section */}
+      <section className="w-full mb-16 sm:mb-24 px-4 bg-gray-100 ">
+        <div className="w-full lg:w-[64rem] flex flex-col items-center gap-5 mx-auto px-6 py-16 md:py-24">
+          <FadeInSection>
+            <div className="text-center text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
+              우리가 하는 일
+            </div>
+            <div className="text-center text-[20px] font-black mb-6 sm:mb-12 md:text-[35px] lg:text-[40px] ">
+              &lsquo;진짜 나&rsquo;를 발견하는 여정을 함께 해요.
+            </div>
+            <div className="flex gap-10 mb-5 flex-col md:flex-row">
+              {programInfo.map((program, idx) => (
+                <ProgramBox
+                  key={idx}
+                  path={program.path}
+                  img={program.img}
+                  title={program.title}
+                  desc={program.desc}
+                />
+              ))}
+            </div>
+          </FadeInSection>
+
+          {/* More button */}
+          <FadeInSection isMove={false}>
+            <div
+              onClick={() => router.push("/project/contents")}
+              className="md:w-[32rem] mx-auto bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-10
+            rounded-md hover:bg-black transition-colors shadow-lg cursor-pointer flex justify-center items-center gap-2"
+            >
+              더 많은 프로그램 보기
+              <ArrowRightIcon className="size-3 sm:size-4" />
+            </div>
+          </FadeInSection>
+        </div>
       </section>
     </main>
   );

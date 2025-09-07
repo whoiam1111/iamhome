@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import FadeInSection from "../../../components/common/FadeInSection";
+import FadeInSection from "../../components/common/FadeInSection";
 import {
   compositionItems,
   goalItems,
   reviewItems,
   scheduleItems,
   stepItems,
-} from "../../../lib/constants/whoiam";
+} from "../../lib/constants/whoiam";
 
 export default function WhoIAmPage() {
   const handleLinkToApply = () => {
@@ -19,14 +19,14 @@ export default function WhoIAmPage() {
   };
 
   return (
-    <div className="w-full mx-auto *:px-6">
+    <main className="mt-[12rem] w-full mx-auto *:px-6">
       {/* About Who I AM */}
       <FadeInSection>
         <section className="text-center mt-8 md:mt-12 max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800">
             About &lsquo;Who I AM&rsquo;
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-gray-600 leading-relaxed px-4">
+          <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed px-4">
             I AM Creator 양성 과정 &lsquo;Who I AM&rsquo;은 진짜 나를 발견하고
             성장할 수 있도록 돕는 프로그램입니다. 인류의 고전인 바이블을
             기반으로 한 탄탄한 학습과 함께 전문적인 코치들의 코칭, 다양한 참여형
@@ -231,6 +231,6 @@ export default function WhoIAmPage() {
           </button>
         </section>
       </FadeInSection>
-    </div>
+    </main>
   );
 }
