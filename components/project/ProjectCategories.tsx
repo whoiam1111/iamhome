@@ -61,7 +61,9 @@ export default function ProjectCategories({
           </div>
           <span
             className={`text-xs md:text-sm lg:text-base mt-2 md:mt-4 text-slate-700 transition-[font-weight] duration-500 ${
-              currentCategory === category.title ? "font-black" : "font-medium"
+              currentCategory === category.title
+                ? "font-extrabold"
+                : "font-medium"
             }`}
           >
             {category.title}

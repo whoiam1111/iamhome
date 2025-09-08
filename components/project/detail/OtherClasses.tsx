@@ -15,7 +15,7 @@ export default function OhterClasses({ events, eventId }: OtherClassesProps) {
           .filter((e) => e.uid !== eventId)
           .slice(0, 4)
           .map((e) => (
-            <Link key={e.uid} href={`/project/contents/${e.uid}`}>
+            <Link key={e.uid} href={`/contents/${e.uid}`}>
               <div className="cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="w-full h-40 sm:h-48 md:h-56 bg-gray-200 overflow-hidden rounded-t-2xl">
                   {e.poster_url ? (
