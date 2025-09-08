@@ -42,7 +42,7 @@ export default function MainSlider({ banners }: MainsliderProps) {
             .map((item, index) => (
               <SwiperSlide key={item.uid}>
                 <div
-                  className="relative bg-gray-200 h-64 sm:h-80 lg:h-96 rounded-lg cursor-pointer"
+                  className="relative bg-gray-200 aspect-[7/4] md:aspect-[6/2] rounded-lg cursor-pointer"
                   onClick={() => router.push(`/contents/${item.uid}`)}
                 >
                   <Image
