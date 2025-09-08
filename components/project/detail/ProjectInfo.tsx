@@ -13,19 +13,35 @@ interface ProjectInfoProps {
 export default function ProjectInfo({ event }: ProjectInfoProps) {
   const formatDate = () => {
     if (!event.start_date) return "미정";
+
     const startDate = new Date(event.start_date).toLocaleDateString("ko-KR", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
-    if (event.start_date === event.end_date || !event.end_date)
-      return startDate;
+
     const endDate = new Date(event.end_date).toLocaleDateString("ko-KR", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
-    return `${startDate} ~ ${endDate}`;
+
+    if (event.start_date === event.end_date || !event.end_date)
+      return startDate;
+
+    // return `${startDate}
+    //           ~ ${endDate}`;
+    return (
+      <div className="flex md:flex-col gap-1">
+        <time dateTime="2025-01-01">{startDate}</time>
+        <div>
+          <span aria-hidden="true"> ~ </span>
+          <span className="sr-only">부터 </span>
+          <time dateTime="2025-01-03">{endDate}</time>
+          <span className="sr-only">까지</span>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -48,11 +64,11 @@ export default function ProjectInfo({ event }: ProjectInfoProps) {
         >
           {event.project_category}
         </span>
-        <h1 className="text-2xl lg:text-3xl font-extrabold leading-tight">
+        <h1 className="text-lg lg:text-xl font-extrabold leading-tight tracking-tight">
           {event.title}
         </h1>
       </div>
-      <div className="space-y-3 pt-2 text-gray-700">
+      <div className="space-y-3 pt-2 text-gray-700 text-sm md:text-base">
         <div className="flex items-center">
           <CalendarIcon className="h-5 w-5 mr-2 text-gray-500" />
           <span className="font-medium">{formatDate()}</span>
@@ -76,7 +92,7 @@ export default function ProjectInfo({ event }: ProjectInfoProps) {
             alert("신청 링크가 아직 등록되지 않았습니다.");
           }
         }}
-        className="w-full bg-blue-500 text-white font-bold py-3 rounded-md hover:bg-blue-600 transition-colors duration-300"
+        className="w-full bg-blue-500 text-white font-bold py-3 rounded-md hover:bg-blue-600 transition-colors duration-300 cursor-pointer"
       >
         신청하기
       </button>

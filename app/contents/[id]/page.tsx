@@ -46,7 +46,7 @@ export default function LectureDetailPage() {
 
   if (!event) {
     return (
-      <div className="w-screen h-[calc(100vh-340px)] flex justify-center">
+      <div className="w-screen h-[calc(100vh-150px)] flex justify-center">
         <LoadingSpinner />
       </div>
     );

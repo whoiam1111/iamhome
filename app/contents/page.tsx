@@ -68,7 +68,7 @@ export default function ProjectPage() {
 
   if (loading)
     return (
-      <div className="w-screen h-[calc(100vh-340px)] flex justify-center">
+      <div className="w-screen h-[calc(100vh-150px)] flex justify-center">
         <LoadingSpinner />
       </div>
     );
