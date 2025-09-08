@@ -54,7 +54,7 @@ export default function LectureDetailPage() {
 
   return (
     <main
-      className="max-w-screen-xl mx-auto mt-[12rem] px-4 py-8 md:py-12 bg-white text-gray-800
+      className="max-w-screen-xl mx-auto mt-[11rem] px-4 py-8 md:py-12 bg-white text-gray-800
       animate-fadein [animation-duration:500ms]"
     >
       <p className="flex items-center gap-1 text-base md:text-lg text-blue-600 font-semibold mb-6">
@@ -63,13 +63,15 @@ export default function LectureDetailPage() {
         <span className="text-gray-700">{event.title}</span>
       </p>
       <div className="relative flex flex-col md:flex-row gap-8 lg:gap-12">
-        <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-10 h-full self-start">
+        <aside className="md:w-1/3 lg:w-1/4 md:sticky md:top-16 h-full self-start">
           <ProjectInfo event={event} />
         </aside>
         <div className="md:w-2/3 lg:w-3/4 flex flex-col gap-10">
-          <section>
-            <DetailSlider images={event.image_urls} />
-          </section>
+          {event.image_urls.length > 0 && (
+            <section>
+              <DetailSlider images={event.image_urls} />
+            </section>
+          )}
           <section>
             <div className="border-b border-gray-200">
               <nav className="flex space-x-8 -mb-px">
@@ -101,9 +103,11 @@ export default function LectureDetailPage() {
             <div className="pt-8 min-h-[150px]">
               {activeTab === "클래스 소개" && (
                 <>
-                  <p className="text-xl font-bold leading-relaxed text-gray-700 whitespace-pre-wrap mb-4">
-                    {event.summary}
-                  </p>
+                  {event.summary && (
+                    <p className="text-xl font-bold leading-relaxed text-gray-700 whitespace-pre-wrap mb-4">
+                      {event.summary}
+                    </p>
+                  )}
                   <p className="text-gray-800 font-semibold mb-2">상세소개</p>
                   <p className="leading-relaxed text-gray-700 whitespace-pre-wrap">
                     {event.description ||
