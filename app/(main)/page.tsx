@@ -192,7 +192,7 @@ export default function FirstLayer() {
             <span> 더 나은 세상을 만들어 갑니다.</span>
           </div>
           <div
-            onClick={() => router.push("/project/contents")}
+            onClick={() => router.push("/contents")}
             className="flex items-center gap-2 text-[12px] font-medium cursor-pointer hover:underline
                       md:text-[18px] sm:text-[15px] mb-8 sm:mb-12"
           >
