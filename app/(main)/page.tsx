@@ -214,7 +214,7 @@ export default function FirstLayer() {
             &apos;진짜 나&apos;를 찾는 I AM의 여정에 함께해보세요.
           </div>
           <div
-            onClick={() => router.push("/project/contents")}
+            onClick={() => router.push("/contents")}
             className="flex items-center gap-2 text-[12px] font-medium cursor-pointer hover:underline md:text-[18px] sm:text-[15px]"
           >
             프로그램 보러가기
