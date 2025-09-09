@@ -83,10 +83,12 @@ export default function WhoIAmPage() {
                 </div>
               ))}
             </div>
-            <p className="text-center text-sm md:text-lg text-gray-700">
-              Who I AM은 자기 이해와 깊은 배움, 그리고 새로운 연대 속에서 ‘진짜
-              나’를 발견하고 잠재력을 실현하도록 합니다.
-            </p>
+            <div className="text-center text-sm md:text-lg text-gray-700">
+              <div>
+                Who I AM은 자기 이해와 깊은 배움, 그리고 새로운 연대 속에서
+              </div>
+              <div>‘진짜 나’를 발견하고 잠재력을 실현하도록 합니다.</div>
+            </div>
           </div>
         </FadeInSection>
       </section>

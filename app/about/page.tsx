@@ -143,7 +143,7 @@ export default function About() {
           {/* More button */}
           <FadeInSection isMove={false}>
             <div
-              onClick={() => router.push("/project/contents")}
+              onClick={() => router.push("/contents")}
               className="md:w-[32rem] mx-auto bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-10
             rounded-md hover:bg-black transition-colors shadow-lg cursor-pointer flex justify-center items-center gap-2"
             >
