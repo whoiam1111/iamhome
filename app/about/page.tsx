@@ -23,7 +23,7 @@ export default function About() {
       </div>
 
       {/* Hero Section */}
-      <section className="flex flex-col w-full lg:w-[64rem] mt-6 sm:mt-12 mb-32 px-4 md:px-5">
+      <section className="flex flex-col w-full lg:w-[64rem] mt-6 sm:mt-12 mb-32 px-6 md:px-5">
         <FadeInSection>
           <div className="flex flex-col font-black text-[25px] md:text-[35px] lg:text-[50px] tracking-tight">
             <div>진짜 내가 되고 싶은 우리가 모여</div>
@@ -54,7 +54,7 @@ export default function About() {
 
       {/* Motive Section */}
       <FadeInSection isMove={false}>
-        <section className="flex flex-col items-center gap-3 sm:gap-5 w-full bg-gray-100 py-[100px] mb-[150px] px-4">
+        <section className="flex flex-col items-center gap-3 sm:gap-5 w-full bg-gray-100 py-[100px] mb-[150px] px-6">
           <div className="text-[15px] font-bold md:text-[18px] lg:text-[20px]">
             우리의 모티브
           </div>
@@ -96,7 +96,7 @@ export default function About() {
           <div className="text-[20px] font-black mb-[50px] md:text-[35px] lg:text-[40px] ">
             지혜와 연대, 더 좋은 세상을 향한 열망
           </div>
-          <div className="w-full lg:w-[64rem] grid grid-cols-3 justify-center gap-1 sm:gap-3 relative px-4">
+          <div className="w-full lg:w-[64rem] grid grid-cols-3 justify-center gap-1 sm:gap-3 relative px-6">
             {images.map((data, idx) => (
               <div
                 className="relative flex justify-center items-center text-gray-600 [&:nth-child(2)]:text-white"
@@ -118,8 +118,8 @@ export default function About() {
       </FadeInSection>
 
       {/* Program Section */}
-      <section className="w-full mb-16 sm:mb-24 px-4 bg-gray-100 ">
-        <div className="w-full lg:w-[64rem] flex flex-col items-center gap-5 mx-auto px-6 py-16 md:py-24">
+      <section className="w-full mb-16 sm:mb-24 px-6 bg-gray-100 ">
+        <div className="w-full lg:w-[64rem] flex flex-col items-center gap-5 mx-auto py-16 md:py-24">
           <FadeInSection>
             <div className="text-center text-[15px] font-bold md:text-[20px] sm:text-[18px] mb-2 sm:mb-4">
               우리가 하는 일
@@ -144,7 +144,7 @@ export default function About() {
           <FadeInSection isMove={false}>
             <div
               onClick={() => router.push("/contents")}
-              className="md:w-[32rem] mx-auto bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-10
+              className="md:w-[32rem] mx-auto bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-6
             rounded-md hover:bg-black transition-colors shadow-lg cursor-pointer flex justify-center items-center gap-2"
             >
               더 많은 프로그램 보기

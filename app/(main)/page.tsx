@@ -82,7 +82,7 @@ export default function FirstLayer() {
       <FadeInSection>
         <section
           ref={nextSectionRef}
-          className="w-full flex flex-col items-center bg-gray-50 py-30 md:py-50"
+          className="w-full flex flex-col items-center bg-white py-30 md:py-50"
         >
           <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full lg:w-[64rem] px-6">
             <div>
@@ -111,7 +111,7 @@ export default function FirstLayer() {
                 <span>삶의 방향에 대한 불안감을 경험하는 청년들의 증가</span>
                 <span>...</span>
               </p>
-              <p className="font-semibold flex flex-col text-xl tracking-tighter sm:text-2xl text-neutral-700">
+              <p className="font-semibold flex flex-col text-xl tracking-tighter md:text-2xl text-neutral-700">
                 이런 문제를 경험하고 있다면 I AM을 만날 때입니다.
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function FirstLayer() {
       </FadeInSection>
 
       {/* Solutions */}
-      <section className="w-full py-24 md:py-32">
+      <section className="w-full py-24 md:py-32 bg-gray-50">
         <FadeInSection>
           <div className="px-6 mb-2 md:mb-8 text-center text-2xl md:text-4xl lg:text-5xl font-extrabold text-neutral-800">
             I AM만의 특별한 솔루션
@@ -134,7 +134,7 @@ export default function FirstLayer() {
             {solutionItems.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col justify-center gap-3 border-[1px] border-gray-50
+                className="flex flex-col justify-center gap-3 border-[1px] border-gray-50 bg-white
                           rounded-lg shadow-md px-6 py-6 md:py-10"
               >
                 <p className="text-center text-lg md:text-xl font-semibold text-gray-700">
@@ -149,7 +149,7 @@ export default function FirstLayer() {
 
       {/* Data Section */}
       <FadeInSection>
-        <section className="w-full bg-gray-50 py-24 md:py-32">
+        <section className="w-full bg-white py-24 md:py-32">
           <div
             className="px-6 w-full mx-auto lg:w-[64rem] flex flex-col gap-12 
             text-gray-800"
@@ -186,7 +186,7 @@ export default function FirstLayer() {
 
       {/* Rolling Carousel */}
       <FadeInSection>
-        <section className="w-full flex flex-col items-center py-30">
+        <section className="w-full flex flex-col items-center py-30 bg-gray-50">
           <div className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-5 text-2xl md:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-8 text-neutral-800">
             <span>I AM은 다양한 컨텐츠를 통해</span>
             <span> 더 나은 세상을 만들어 갑니다.</span>
