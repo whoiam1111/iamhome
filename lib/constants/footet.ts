@@ -1,6 +1,6 @@
 export const footerMenus = [
   { title: "About", path: "/about" },
-  { title: "Teams", path: "/teams" },
-  { title: "Project", path: "/project/contents" },
+  { title: "Contents", path: "/contents" },
+  { title: "WhoIAM", path: "/whoiam" },
   { title: "Contact", path: "/contact" },
 ];
