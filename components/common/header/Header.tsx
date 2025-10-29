@@ -51,9 +51,9 @@ export default function Header() {
           onClick={() => router.push("/contents")}
         />
         <NavItem
-          label="WhoIAM"
-          active={pathname.includes("/whoiam")}
-          onClick={() => router.push("/whoiam")}
+          label="B:Origin"
+          active={pathname.includes("/borigin")}
+          onClick={() => router.push("/borigin")}
         />
         <NavItem
           label="Contact"
@@ -61,18 +61,18 @@ export default function Header() {
           onClick={() => router.push("/contact")}
         />
       </div>
-      <div className="mx-auto cursor-pointer flex justify-center w-full">
+      <div className="mx-auto cursor-pointer flex justify-center w-full pt-3 pb-0 md:p-5">
         <Image
           src={
             isMainPage
-              ? "/assets/title_logo.png"
-              : "/assets/title_logo_black.png"
+              ? "/assets/blive_logo_white.png"
+              : "/assets/blive_logo.png"
           }
           alt="Title Logo"
-          width={152}
-          height={60}
+          width={120}
+          height={30}
           onClick={() => router.push("/")}
-          className={`w-[120px] sm:w-[152px]`}
+          className={`w-[80px] sm:w-[110px]`}
           priority
         />
       </div>

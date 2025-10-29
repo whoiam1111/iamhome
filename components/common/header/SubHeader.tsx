@@ -56,9 +56,9 @@ export default function SubHeader() {
             onClick={() => router.push("/contents")}
           />
           <NavItem
-            label="WhoIAM"
-            active={pathname.includes("/whoiam")}
-            onClick={() => router.push("/whoiam")}
+            label="B:Origin"
+            active={pathname.includes("/borigin")}
+            onClick={() => router.push("/borigin")}
           />
           <NavItem
             label="Contact"

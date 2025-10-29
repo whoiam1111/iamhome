@@ -9,7 +9,7 @@ interface OtherClassesProps {
 export default function OhterClasses({ events, eventId }: OtherClassesProps) {
   return (
     <>
-      <div className="font-bold mb-5">I AM의 다른 행사들</div>
+      <div className="font-bold mb-5">B:LIVE의 다른 행사들</div>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         {events
           .filter((e) => e.uid !== eventId)

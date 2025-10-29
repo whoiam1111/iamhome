@@ -66,8 +66,8 @@ export default function FirstLayer() {
           <div className="text-[clamp(2rem,_4.5vw,_4rem)] font-black">
             &apos;진짜 나&apos;를 찾는 사람들
           </div>
-          <div className="text-[clamp(1rem,_2vw,_1.7rem)] font-serif italic">
-            I AM creators&apos; team
+          <div className="text-[clamp(1rem,_2vw,_1.7rem)]">
+            B:LIVE Community
           </div>
         </div>
         <div className="absolute bottom-10">
@@ -112,7 +112,7 @@ export default function FirstLayer() {
                 <span>...</span>
               </p>
               <p className="font-semibold flex flex-col text-xl tracking-tighter md:text-2xl text-neutral-700">
-                이런 문제를 경험하고 있다면 I AM을 만날 때입니다.
+                이런 문제를 경험하고 있다면 B:LIVE를 만날 때입니다.
               </p>
             </div>
             <div className="w-full md:w-[40%]">
@@ -128,7 +128,7 @@ export default function FirstLayer() {
       <section className="w-full py-24 md:py-32 bg-gray-50">
         <FadeInSection>
           <div className="px-6 mb-2 md:mb-8 text-center text-2xl md:text-4xl lg:text-5xl font-extrabold text-neutral-800">
-            I AM만의 특별한 솔루션
+            B:LIVE만의 특별한 솔루션
           </div>
           <div className="px-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-12 max-w-4xl mx-auto">
             {solutionItems.map((item) => (
@@ -148,7 +148,7 @@ export default function FirstLayer() {
       </section>
 
       {/* Data Section */}
-      <FadeInSection>
+      {/* <FadeInSection>
         <section className="w-full bg-white py-24 md:py-32">
           <div
             className="px-6 w-full mx-auto lg:w-[64rem] flex flex-col gap-12 
@@ -182,13 +182,13 @@ export default function FirstLayer() {
             <div className="font-light">※ 2024년 12월 기준</div>
           </div>
         </section>
-      </FadeInSection>
+      </FadeInSection> */}
 
       {/* Rolling Carousel */}
       <FadeInSection>
         <section className="w-full flex flex-col items-center py-30 bg-gray-50">
           <div className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-5 text-2xl md:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-8 text-neutral-800">
-            <span>I AM은 다양한 컨텐츠를 통해</span>
+            <span>B:LIVE은 다양한 컨텐츠를 통해</span>
             <span> 더 나은 세상을 만들어 갑니다.</span>
           </div>
           <div
@@ -211,7 +211,7 @@ export default function FirstLayer() {
                       bg-cover bg-center`}
         >
           <div className="text-[clamp(1.5rem,_2.5vw,_3.5rem)] font-black flex gap-3 items-center">
-            &apos;진짜 나&apos;를 찾는 I AM의 여정에 함께해보세요.
+            &apos;진짜 나&apos;를 찾는 B:LIVE의 여정에 함께해보세요.
           </div>
           <div
             onClick={() => router.push("/contents")}

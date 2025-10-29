@@ -5,8 +5,8 @@ import Footer from "../components/common/Footer";
 import SubHeader from "../components/common/header/SubHeader";
 
 export const metadata: Metadata = {
-  title: "I AM Creators' Team",
-  description: "I AM Creators' Team",
+  title: "B:LIVE Community",
+  description: "B:LIVE Community",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
   },

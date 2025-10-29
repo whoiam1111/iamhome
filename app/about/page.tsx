@@ -41,7 +41,7 @@ export default function About() {
         <FadeInSection>
           <div className="text-[12px] font-semibold leading-relaxed md:text-[18px] lg:text-[24px] ">
             <div>
-              &quot;I AM Creators’ Team&quot;은 누구나 창조적 삶을 살 수 있다고
+              &quot;B:LIVE Community&quot;는 누구나 생동감 있게 살 수 있다고
               믿는,
             </div>
             <div>
@@ -58,30 +58,26 @@ export default function About() {
           <div className="text-[15px] font-bold md:text-[18px] lg:text-[20px]">
             우리의 모티브
           </div>
-          <div className="text-[25px] font-black mb-[50px] md:text-[35px] lg:text-[40px] ">
-            &quot;I AM WHO I AM&quot;
+          <div className="text-[20px] font-black mb-[50px] md:text-[25px] lg:text-[35px] ">
+            B:LIVE = &quot;Be Alive / Be Live / Believe&quot;
           </div>
-          <div className="font-serif italic tracking-tight text-[#242424] flex flex-col gap-2 text-xs md:text-sm">
+          <div className="font-serif italic tracking-tight text-[#242424] flex flex-col gap-2 text-sm md:text-base">
             <div>
-              &ldquo;하나님이 모세에게 이르시되{" "}
-              <span className="font-black underline">
-                나는 스스로 있는 자니라(I AM WHO I AM)
-              </span>
-              …
+              Be Alive → 단순히 살아가는 것이 아니라, ‘깨어 있는 존재’로서
+              자신답게 살아가는 것을 의미합니다.
             </div>
             <div>
-              너는 이스라엘 자손에게 이같이 이르기를 스스로 있는 자가 나를
-              너희에게 보내셨다 하라&rdquo;
+              Be Live → 과거의 틀이나 타인의 기준이 아닌, 지금 이 순간의 나로서
+              선택하고 행동하는 삶을 상징합니다.
             </div>
-            <div> (출애굽기 3:14)</div>
+            <div>
+              Believe → ‘나 자신과 세상의 가능성을 믿는다’는 신념을 담습니다.
+            </div>
           </div>
-          <div className="mt-[50px] font-semibold tracking-tight flex flex-col gap-1 text-sm md:text-lg lg:text-xl">
+          <div className="mt-[50px] font-semibold tracking-tight flex flex-col gap-1 text-sm md:text-xl lg:text-2xl">
             <div>
-              &lsquo;I AM&rsquo;이라는 이름은 존재의 의미를 찾는 것, 즉 나
-              자신으로서
-            </div>
-            <div>
-              각자가 자신의 고유한 삶의 의미와 가치를 찾아가는 것을 의미합니다.
+              즉, “B:LIVE”는 ‘진짜 나로 살아가는 것’을 추구하는 사람들의
+              커뮤니티입니다.
             </div>
           </div>
         </section>

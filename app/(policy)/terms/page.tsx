@@ -1,9 +1,9 @@
 import React from "react";
 
 export const metadata = {
-  title: "개인정보취급방침 | I AM",
+  title: "개인정보취급방침 | B:LIVE",
   description:
-    "아이엠(I AM)에서 운영하는 아이엠 홈페이지의 개인정보취급방침 페이지입니다.",
+    "비라이브(B:LIVE)에서 운영하는 비라이브 홈페이지의 개인정보취급방침 페이지입니다.",
 };
 
 export default function TermsPage() {
@@ -71,7 +71,7 @@ export default function TermsPage() {
         {/* Footer note */}
         <hr className="my-10 border-neutral-200" />
         <p className="text-xs sm:text-sm text-neutral-500">
-          ※ 문의: 개인정보관리 담당자 (이메일 : iamcreatorss@gmail.com)
+          ※ 문의: 개인정보관리 담당자 (이메일 : blivecommunity@gmail.com)
         </p>
       </article>
     </main>
