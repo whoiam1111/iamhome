@@ -26,8 +26,7 @@ export default function About() {
       <section className="flex flex-col w-full lg:w-[64rem] mt-6 sm:mt-12 mb-32 px-6 md:px-5">
         <FadeInSection>
           <div className="flex flex-col font-black text-[25px] md:text-[35px] lg:text-[50px] tracking-tight">
-            <div>진짜 내가 되고 싶은 우리가 모여</div>
-            <div>더 나은 세상을 향해</div>
+            <div>진짜 나로 살아가다, B:LIVE.</div>
           </div>
         </FadeInSection>
         <div className="mt-10 sm:mt-20 rounded-[30px] mb-10 w-full overflow-hidden relative aspect-video">

@@ -22,10 +22,13 @@ export default function BOriginPage() {
     <main className="mt-[12rem] w-full mx-auto *:px-6">
       {/* About B:Origin */}
       <FadeInSection>
-        <section className="text-center mt-8 md:mt-12 max-w-3xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800">
+        <section className="text-center mt-8 md:mt-12 max-w-3xl mx-auto mb-20 md:mb-24">
+          <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800 mb-16">
             About &lsquo;B:Origin&rsquo;
           </h2>
+          <h3 className="text-xl sm:text-2xl font-black">
+            “진짜 나의 시작점으로 돌아가다.”
+          </h3>
           <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed px-4">
             &lsquo;B:Origin&rsquo;은 진짜 나를 발견하고 성장할 수 있도록 돕는
             프로그램입니다. 인류의 고전인 바이블을 기반으로 한 탄탄한 학습과
@@ -36,7 +39,7 @@ export default function BOriginPage() {
       </FadeInSection>
 
       {/* Video */}
-      <FadeInSection>
+      {/* <FadeInSection>
         <section className="max-w-4xl rounded-lg mx-auto mt-16 mb-20 md:mb-24">
           <div className="mb-14 w-full mx-auto">
             <video
@@ -52,7 +55,7 @@ export default function BOriginPage() {
             </video>
           </div>
         </section>
-      </FadeInSection>
+      </FadeInSection> */}
 
       {/* Gain from B:Origin*/}
       <section className="py-20 bg-gray-100 w-full">
