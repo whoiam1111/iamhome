@@ -8,9 +8,9 @@ import {
   reviewItems,
   scheduleItems,
   stepItems,
-} from "../../lib/constants/whoiam";
+} from "../../lib/constants/borigin";
 
-export default function WhoIAmPage() {
+export default function BOriginPage() {
   const handleLinkToApply = () => {
     window.open(
       "https://the-form.io/forms/survey/response/32c34765-a419-4987-84b3-777308f5be42",
@@ -20,17 +20,17 @@ export default function WhoIAmPage() {
 
   return (
     <main className="mt-[12rem] w-full mx-auto *:px-6">
-      {/* About Who I AM */}
+      {/* About B:Origin */}
       <FadeInSection>
         <section className="text-center mt-8 md:mt-12 max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800">
-            About &lsquo;Who I AM&rsquo;
+            About &lsquo;B:Origin&rsquo;
           </h2>
           <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed px-4">
-            I AM Creator 양성 과정 &lsquo;Who I AM&rsquo;은 진짜 나를 발견하고
-            성장할 수 있도록 돕는 프로그램입니다. 인류의 고전인 바이블을
-            기반으로 한 탄탄한 학습과 함께 전문적인 코치들의 코칭, 다양한 참여형
-            프로그램으로 구성되어 있습니다.
+            &lsquo;B:Origin&rsquo;은 진짜 나를 발견하고 성장할 수 있도록 돕는
+            프로그램입니다. 인류의 고전인 바이블을 기반으로 한 탄탄한 학습과
+            함께 전문적인 코치들의 코칭, 다양한 참여형 프로그램으로 구성되어
+            있습니다.
           </p>
         </section>
       </FadeInSection>
@@ -54,15 +54,15 @@ export default function WhoIAmPage() {
         </section>
       </FadeInSection>
 
-      {/* Gain from Who I AM */}
+      {/* Gain from B:Origin*/}
       <section className="py-20 bg-gray-100 w-full">
         <FadeInSection>
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl md:text-2xl font-serif italic text-black text-center mb-4">
-              Who I AM에서 얻을 수 있는 것
+              B:Origin에서 얻을 수 있는 것
             </h2>
             <p className="text-center text-xs md:text-sm text-gray-500 mb-10">
-              What You’ll Gain from &apos;Who I AM&apos;
+              What You’ll Gain from &apos;B:Origin&apos;
             </p>
             <div className="flex flex-col md:grid md:grid-cols-3 gap-4 mb-10">
               {goalItems.map((item) => (
@@ -85,7 +85,7 @@ export default function WhoIAmPage() {
             </div>
             <div className="text-center text-sm md:text-lg text-gray-700">
               <div>
-                Who I AM은 자기 이해와 깊은 배움, 그리고 새로운 연대 속에서
+                B:Origin은 자기 이해와 깊은 배움, 그리고 새로운 연대 속에서
               </div>
               <div>‘진짜 나’를 발견하고 잠재력을 실현하도록 합니다.</div>
             </div>
@@ -229,7 +229,7 @@ export default function WhoIAmPage() {
             className="bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-10
             rounded-md hover:bg-black transition-colors shadow-lg cursor-pointer"
           >
-            Who I AM 신청하기
+            B:Origin 신청하기
           </button>
         </section>
       </FadeInSection>

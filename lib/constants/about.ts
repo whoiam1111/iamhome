@@ -18,7 +18,7 @@ export const teamData = [
   {
     title: "Media Team",
     koreanText:
-      "우리는 이야기에 생명을 불어넣어 세상과 연결합니다. 다양한 미디어와 감각적인 스토리텔링을 통해 I AM의 정신과 문화를 전합니다. 더 많은 사람들이 우리의 여정에 동참하도록 다리 역할을 합니다.",
+      "우리는 이야기에 생명을 불어넣어 세상과 연결합니다. 다양한 미디어와 감각적인 스토리텔링을 통해 B:LIVE의 정신과 문화를 전합니다. 더 많은 사람들이 우리의 여정에 동참하도록 다리 역할을 합니다.",
     imageUrl: MEDIA_TEAM,
   },
 ];
@@ -32,9 +32,9 @@ export const programInfo = [
     desc: `'진짜 나'를 찾고, 성장할 수 있도록 강연, 훈련, 멘토링, 다양한 콘텐츠를 기획·운영합니다.`,
   },
   {
-    path: "/whoiam",
+    path: "/borigin",
     img: "https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/77d82010-7c68-47eb-17d1-89d2ed9d8a00/public",
-    title: "Who I AM",
+    title: "B:Origin",
     desc: `'진짜 나'를 찾고, 성장할 수 있는 체계적인 훈련 프로그램을 운영합니다. 강연, 코칭, 교류와 각종 프로그램을 함께 할 수 있습니다.`,
   },
 ];

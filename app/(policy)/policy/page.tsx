@@ -1,9 +1,9 @@
 import React from "react";
 
 export const metadata = {
-  title: "개인정보이용약관 | I AM",
+  title: "개인정보이용약관 | B:LIVE",
   description:
-    "아이엠(I AM)에서 운영하는 아이엠 홈페이지의 개인정보 이용 약관 페이지입니다.",
+    "비라이브(B:IVE)에서 운영하는 비라이브 홈페이지의 개인정보 이용 약관 페이지입니다.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       body: (
         <div className="space-y-4">
           <p>
-            아이엠(IAM)에서 운영하는 아이엠 홈페이지(이하 &ldquo;본
+            비라이브(B:LIVE)에서 운영하는 비라이브 홈페이지(이하 &ldquo;본
             사이트&ldquo;)는 회원의 개인정보보호를 매우 중요시하며, 『정보통신망
             이용 촉진 및 정보 보호 등에 관한 법률』상의 개인정보보호 규정 및
             정보통신부가 제정한 『개인정보보호지침』을 준수하고 있습니다.
@@ -243,7 +243,7 @@ export default function PrivacyPolicyPage() {
             </li>
           </ul>
           <p>
-            아이엠은 ‘개인정보 유효기간제’에 따라 12개월간 서비스를 이용하지
+            비라이브는 ‘개인정보 유효기간제’에 따라 12개월간 서비스를 이용하지
             않은 회원(휴면계정) 개인정보는 3년간 별도로 분리 보관하거나 파기할
             수 있으며, 사전에 휴면계정으로 관리됨을 고지하여 이용자가 이용재개를
             원하는 경우 재개할 수 있도록 합니다.
@@ -437,7 +437,7 @@ export default function PrivacyPolicyPage() {
           {/* Footer note */}
           <hr className="my-10 border-neutral-200" />
           <p className="text-xs sm:text-sm text-neutral-500">
-            ※ 문의: 개인정보관리 담당자 (이메일 : iamcreatorss@gmail.com)
+            ※ 문의: 개인정보관리 담당자 (이메일 : blivecommunity@gmail.com)
           </p>
         </article>
       </div>

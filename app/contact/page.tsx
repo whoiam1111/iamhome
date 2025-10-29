@@ -43,7 +43,7 @@ export default function Contact() {
               제휴 / 문의
             </div>
             <div className="text-gray-500 text-sm sm:text-base">
-              iamcreatorss@gmail.com
+              blivecommunity@gmail.com
             </div>
           </div>
         </div>

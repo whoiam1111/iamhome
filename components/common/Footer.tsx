@@ -40,11 +40,11 @@ export default function Footer() {
           <div className="flex gap-1 text-[9px] text-[#9a9a9a] font-light sm:justify-center sm:w-full">
             <span>주소 : 노원구 동일로 1029 6F</span>
             <span className="text-[#9a9a9a]">|</span>
-            <span>문의 : iamcreatorss@gmail.com</span>
+            <span>문의 : blivecommunity@gmail.com</span>
           </div>
         </div>
         <div className="text-[#777777] text-[11px] font-medium leading-[20px] mt-1 sm:flex sm:flex-col sm:items-center">
-          © I AM Creators team All Rights Reserved.
+          © B:LIVE Community All Rights Reserved.
         </div>
       </div>
 
