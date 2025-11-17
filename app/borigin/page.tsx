@@ -22,7 +22,7 @@ export default function BOriginPage() {
     <main className="mt-[12rem] w-full mx-auto *:px-6">
       {/* About B:Origin */}
       <FadeInSection>
-        <section className="text-center mt-8 md:mt-12 max-w-3xl mx-auto mb-20 md:mb-24">
+        <section className="text-center mt-8 md:mt-12 max-w-2xl mx-auto mb-20 md:mb-24">
           <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800 mb-16">
             About &lsquo;B:Origin&rsquo;
           </h2>
@@ -30,10 +30,12 @@ export default function BOriginPage() {
             “진짜 나의 시작점으로 돌아가다.”
           </h3>
           <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed px-4">
-            &lsquo;B:Origin&rsquo;은 진짜 나를 발견하고 성장할 수 있도록 돕는
-            프로그램입니다. 인류의 고전인 바이블을 기반으로 한 탄탄한 학습과
-            함께 전문적인 코치들의 코칭, 다양한 참여형 프로그램으로 구성되어
-            있습니다.
+            우리는 모두 &lsquo;나는 누구인가&rsquo;, 그리고 &lsquo;왜
+            살아가는가&rsquo;라는 근원적 질문을 품고 살아갑니다.
+            <br></br>
+            &lsquo;B:Origin&rsquo;은 인류의 근원적 질문이 담긴 다양한 종교
+            경서와 고전을 현대의 언어로 재해석하여, 각자가 자기 존재의 기원을
+            탐구하고 삶의 방향을 새롭게 정의할 수 있도록 돕는 프로그램입니다.
           </p>
         </section>
       </FadeInSection>
