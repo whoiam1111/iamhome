@@ -9,6 +9,7 @@ import { ArrowDownIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
 import { WORRY } from "../../lib/constants/image_path";
 // import { BOY } from "../../lib/constants/image_path";
+import DandanPopup from "../../components/common/DandanPopup";
 
 export default function FirstLayer() {
 	const router = useRouter();
@@ -46,6 +47,7 @@ export default function FirstLayer() {
 
 	return (
 		<div className={`w-full h-full flex flex-col items-center`}>
+			<DandanPopup />
 			{/* Hero Section */}
 			<section className="relative flex justify-center items-center h-screen sm:w-full animate-fadein">
 				<video
