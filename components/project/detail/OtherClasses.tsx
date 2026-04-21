@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { EventItem } from "../../../lib/types/project";
 
@@ -17,12 +18,13 @@ export default function OhterClasses({ events, eventId }: OtherClassesProps) {
           .map((e) => (
             <Link key={e.uid} href={`/contents/${e.uid}`}>
               <div className="cursor-pointer rounded-xl md:rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group">
-                <div className="aspect-[3/4] w-full bg-gray-200 overflow-hidden">
+                <div className="aspect-[3/4] w-full bg-gray-200 overflow-hidden relative">
                   {e.poster_url ? (
-                    <img
+                    <Image
                       src={e.poster_url}
                       alt={e.title}
-                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                      fill
+                      className="object-cover transform hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-gray-500">

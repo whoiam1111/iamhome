@@ -2,6 +2,7 @@
 
 "use client"; // 클라이언트 컴포넌트 선언
 
+import Image from "next/image";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -34,11 +35,14 @@ export default function DetailSlider({ images }: DetailSliderProps) {
         {images.map((src, index) => (
           // 각 슬라이드의 너비를 조절하여 양옆이 보이게 함
           <SwiperSlide key={index}>
-            <img
-              src={src}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-80 sm:h-96 object-cover rounded-lg bg-gray-200"
-            />
+            <div className="relative w-full h-80 sm:h-96 object-cover rounded-lg bg-gray-200 overflow-hidden">
+              <Image
+                src={src}
+                alt={`Slide ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

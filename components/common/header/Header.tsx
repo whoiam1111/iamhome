@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import NavItem from "./NavItem";
 
 export default function Header() {
 	const [isHidden, setIsHidden] = useState(false);
-	const [lastScrollY, setLastScrollY] = useState(0);
+	const lastScrollY = useRef(0);
 	const pathname = usePathname();
 	const router = useRouter();
 
@@ -15,13 +15,13 @@ export default function Header() {
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
 
-			if (currentScrollY > lastScrollY && currentScrollY > 50) {
+			if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
 				setIsHidden(true);
 			} else {
 				setIsHidden(false);
 			}
 
-			setLastScrollY(currentScrollY);
+			lastScrollY.current = currentScrollY;
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });

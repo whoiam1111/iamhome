@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function DandanPopup() {
@@ -33,9 +34,10 @@ export default function DandanPopup() {
         {/* Content Area */}
         <div className="relative h-[450px] md:h-[550px] w-full flex flex-col justify-end items-center p-8 pb-10">
           {/* Background Image */}
-          <img
+          <Image
             src="https://imagedelivery.net/BeIKmnUeqh2uGk7c6NSanA/58277b6c-8f42-4120-58a9-08fa36b79100/public"
             alt="단단프로젝트 배경"
+            fill
             className="absolute inset-0 w-full h-full object-cover"
           />
           

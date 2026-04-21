@@ -1,9 +1,10 @@
 "use client";
 
-import { records, solutionItems } from "../../lib/constants/main";
+import { solutionItems } from "../../lib/constants/main";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import FadeInSection from "../../components/common/FadeInSection";
+import Image from "next/image";
 import RollingCarousel from "../../components/main/RollingCarousel";
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
@@ -132,10 +133,11 @@ export default function FirstLayer() {
 							</p>
 						</div>
 						<div className="w-full md:w-[40%]">
-							<div className="overflow-hidden rounded-lg">
-								<img
+							<div className="relative overflow-hidden rounded-lg aspect-square">
+								<Image
 									src={WORRY}
-									alt=""
+									alt="Worrying student"
+									fill
 									className="object-cover"
 								/>
 							</div>

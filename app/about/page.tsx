@@ -100,7 +100,14 @@ export default function About() {
                 <div className="text-xs sm:text-lg absolute font-serif italic text-shadow-sm p-2">
                   {data.text}
                 </div>
-                <img className="sm:h-[540px]" src={data.img} alt="" />
+                <div className="relative w-full sm:h-[540px] aspect-[3/4] sm:aspect-auto">
+                  <Image
+                    src={data.img}
+                    alt={data.text || "Vision image"}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
             ))}
           </div>

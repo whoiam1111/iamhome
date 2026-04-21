@@ -1,6 +1,6 @@
 "use client";
 
-import { DandanStep } from "../../../types/dandan";
+
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 interface IntroViewProps {

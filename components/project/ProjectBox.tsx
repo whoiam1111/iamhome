@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { EventItem } from "../../lib/types/project";
 import { getCategoryStyle } from "../../lib/utils/get_category";
@@ -10,11 +11,12 @@ export default function ProjectBox({ item }: ProjectItemProps) {
   return (
     <Link href={`/contents/${item.uid}`} key={item.uid}>
       <div className="group cursor-pointer">
-        <div className="relative overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300">
-          <img
+        <div className="relative overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300 aspect-[3/4]">
+          <Image
             src={item.poster_url}
-            alt={`assets/history_whoiampreview_P_2`}
-            className="w-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-300"
+            alt={item.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {/* ===== 카테고리 태그 ===== */}
           {item.project_category && (

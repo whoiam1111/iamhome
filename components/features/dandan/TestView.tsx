@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState } from "react";
 import { DANDAN_QUESTIONS } from "../../../lib/constants/dandan-data";
 import { DandanType, UserAnswers } from "../../../types/dandan";
-import { ArrowPathIcon, CheckIcon, ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 interface TestViewProps {
   onComplete: (answers: UserAnswers) => void;
@@ -56,9 +56,7 @@ export default function TestView({ onComplete }: TestViewProps) {
     setSelections((prev) => [...prev, { type, score: nextScore }]);
   };
 
-  const resetCurrent = () => {
-    setSelections([]);
-  };
+
 
   const handleNext = () => {
     if (selections.length !== 4) return;

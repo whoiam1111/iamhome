@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { EventItem } from "../../../lib/types/project";
 import {
   CalendarIcon,
@@ -48,11 +49,12 @@ export default function ProjectInfo({ event }: ProjectInfoProps) {
     <div className="bg-gray-100 rounded-lg p-6 space-y-5">
       {/* Poster Image Section */}
       {event.poster_url && (
-        <div className="mb-6 rounded-lg overflow-hidden">
-          <img
+        <div className="mb-6 rounded-lg overflow-hidden relative aspect-square">
+          <Image
             src={event.poster_url}
             alt={`${event.title} Poster`}
-            className="w-full h-auto object-cover"
+            fill
+            className="object-cover"
           />
         </div>
       )}

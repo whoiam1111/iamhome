@@ -14,6 +14,7 @@ export default function FadeInSection({
   const domRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const node = domRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,13 +27,13 @@ export default function FadeInSection({
       { threshold: 0.2 }
     );
 
-    if (domRef.current) {
-      observer.observe(domRef.current);
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (domRef.current) {
-        observer.unobserve(domRef.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, []);
