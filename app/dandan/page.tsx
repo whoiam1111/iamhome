@@ -11,8 +11,10 @@ import ResultView from "../../components/features/dandan/ResultView";
 export default function DandanPage() {
 	const [step, setStep] = useState<DandanStep>("intro");
 	const [answers, setAnswers] = useState<UserAnswers>({});
+	const [userName, setUserName] = useState<string>("");
 
-	const handleStart = () => {
+	const handleStart = (name: string) => {
+		setUserName(name);
 		setStep("test");
 	};
 
@@ -28,6 +30,7 @@ export default function DandanPage() {
 
 	const handleRestart = () => {
 		setAnswers({});
+		setUserName("");
 		setStep("intro");
 	};
 
@@ -71,7 +74,7 @@ export default function DandanPage() {
 					>
 						메인으로 돌아가기
 					</Link>
-					<ResultView answers={answers} onRestart={handleRestart} />
+					<ResultView userName={userName} answers={answers} onRestart={handleRestart} />
 				</div>
 			)}
 		</div>

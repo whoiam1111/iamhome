@@ -1,13 +1,16 @@
 "use client";
 
 
+import { useState } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 interface IntroViewProps {
-  onStart: () => void;
+  onStart: (name: string) => void;
 }
 
 export default function IntroView({ onStart }: IntroViewProps) {
+  const [name, setName] = useState("");
+
   return (
     <div className="w-full flex justify-center animate-in fade-in duration-500 pb-20 pt-10">
       <div className="w-full max-w-2xl bg-white shadow-xl rounded-3xl p-8 md:p-12 border border-gray-100 flex flex-col items-center text-center">
@@ -45,11 +48,29 @@ export default function IntroView({ onStart }: IntroViewProps) {
           </div>
         </div>
 
+        <div className="w-full mt-6 text-left">
+          <label htmlFor="userName" className="block text-sm font-bold text-gray-700 mb-2">
+            이름을 입력해주세요
+          </label>
+          <input
+            id="userName"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="홍길동"
+            className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium"
+          />
+        </div>
+
         <button
-          onClick={onStart}
-          className="mt-10 px-8 py-5 bg-blue-500 hover:bg-blue-600 active:scale-[0.98] 
-                     text-white font-bold text-xl rounded-2xl w-full sm:w-auto min-w-[240px]
-                     shadow-[0_8px_30px_rgba(59,130,246,0.3)] transition-all flex justify-center items-center gap-2"
+          onClick={() => onStart(name)}
+          disabled={!name.trim()}
+          className={`mt-10 px-8 py-5 text-white font-bold text-xl rounded-2xl w-full sm:w-auto min-w-[240px] transition-all flex justify-center items-center gap-2
+            ${
+              name.trim() 
+              ? "bg-blue-500 hover:bg-blue-600 active:scale-[0.98] shadow-[0_8px_30px_rgba(59,130,246,0.3)]" 
+              : "bg-gray-300 cursor-not-allowed"
+            }`}
         >
           테스트 시작하기
           <ArrowRightIcon className="w-5 h-5" />
