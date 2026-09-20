@@ -47,10 +47,10 @@ export default function DandanPopup() {
 					{/* Texts & CTA */}
 					<div className="relative z-10 w-full flex flex-col items-center text-center text-white">
 						<h2 className="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-white">
-							단단프로젝트!
+							더-단단 그라운드
 						</h2>
 						<p className="text-lg md:text-xl font-medium mb-10 text-gray-200 drop-shadow-md">
-							불안을 녹여 단단한 가치를 빚다
+							불안을 녹여 단단한 가치를 만들다
 						</p>
 
 						<button
