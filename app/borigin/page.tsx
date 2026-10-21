@@ -16,11 +16,11 @@ export default function BOriginPage() {
 	};
 
 	return (
-		<main className="mt-[12rem] w-full mx-auto *:px-6">
+		<main className="mt-24 sm:mt-28 md:mt-32 w-full mx-auto *:px-6">
 			{/* About B:Origin */}
 			<FadeInSection>
-				<section className="text-center mt-8 md:mt-12 max-w-2xl mx-auto mb-20 md:mb-24">
-					<h2 className="text-2xl sm:text-3xl font-serif italic text-gray-800 mb-16">
+				<section className="text-center max-w-2xl mx-auto mb-20 md:mb-24">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-serif italic text-gray-800 mb-16">
 						About &lsquo;B:Origin&rsquo;
 					</h2>
 					<h3 className="text-xl sm:text-2xl font-black">
