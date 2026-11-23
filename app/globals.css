@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
 @theme {
+  /* 브로슈어/로고 기준 브랜드 팔레트: blue-* 클래스 전체에 적용 */
+  --color-blue-50: #eef5ff;
+  --color-blue-100: #d9e9ff;
+  --color-blue-200: #bbd8ff;
+  --color-blue-300: #8cbfff;
+  --color-blue-400: #559bff;
+  --color-blue-500: #1a7bff;
+  --color-blue-600: #0f62e6;
+  --color-blue-700: #0b4fcf;
+  --color-blue-800: #0e41a3;
+  --color-blue-900: #113a80;
+  --color-brand-green: #8ee06b;
+
   --animate-fadein: fadein 0.7s ease-in-out;
   @keyframes fadein {
     0% {

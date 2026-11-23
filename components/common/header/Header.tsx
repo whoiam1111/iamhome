@@ -29,7 +29,6 @@ export default function Header() {
 	}, []);
 
 	const isMainPage = pathname === "/"; // 메인 페이지 여부 확인
-	const isBoriginPage = pathname.includes("/borigin");
 
 	return (
 		<div
@@ -41,9 +40,7 @@ export default function Header() {
 		}`}
 		>
 			<div
-				className={`sm:absolute sm:left-4 sm:top-3 flex sm:flex-col gap-2 sm:gap-1 px-2 transition-all duration-300 ${
-					isBoriginPage ? "py-3" : "sm:py-3"
-				} ${
+				className={`sm:absolute sm:left-4 sm:top-3 flex sm:flex-col gap-2 sm:gap-1 px-2 sm:py-3 transition-all duration-300 ${
 					isHidden
 						? "sm:-translate-y-[150%] sm:opacity-0 sm:pointer-events-none"
 						: "sm:translate-y-0 sm:opacity-100"
@@ -70,23 +67,21 @@ export default function Header() {
 					onClick={() => router.push("/contact")}
 				/>
 			</div>
-			{!isBoriginPage && (
-				<div className="mx-auto cursor-pointer flex justify-center w-full pt-3 pb-0 sm:pt-6">
-					<Image
-						src={
-							isMainPage
-								? "/assets/blive_logo_white.png"
-								: "/assets/blive_logo.png"
-						}
-						alt="Title Logo"
-						width={120}
-						height={30}
-						onClick={() => router.push("/")}
-						className={`w-[80px] sm:w-[110px]`}
-						priority
-					/>
-				</div>
-			)}
+			<div className="mx-auto cursor-pointer flex justify-center w-full pt-3 pb-0 sm:pt-6">
+				<Image
+					src={
+						isMainPage
+							? "/assets/borigin_logo_white.png"
+							: "/assets/borigin_logo.png"
+					}
+					alt="B:Origin"
+					width={2880}
+					height={714}
+					onClick={() => router.push("/")}
+					className="w-[120px] sm:w-[160px] h-auto"
+					priority
+				/>
+			</div>
 		</div>
 	);
 }

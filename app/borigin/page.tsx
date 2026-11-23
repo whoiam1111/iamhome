@@ -16,11 +16,11 @@ export default function BOriginPage() {
 	};
 
 	return (
-		<main className="mt-24 sm:mt-28 md:mt-32 w-full mx-auto *:px-6">
+		<main className="mt-36 sm:mt-40 w-full mx-auto *:px-6">
 			{/* About B:Origin */}
 			<FadeInSection>
 				<section className="text-center max-w-2xl mx-auto mb-20 md:mb-24">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-serif italic text-gray-800 mb-16">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-500 mb-16">
 						About &lsquo;B:Origin&rsquo;
 					</h2>
 					<h3 className="text-xl sm:text-2xl font-black">
@@ -57,10 +57,10 @@ export default function BOriginPage() {
       </FadeInSection> */}
 
 			{/* Gain from B:Origin*/}
-			<section className="py-20 bg-gray-100 w-full">
+			<section className="py-20 bg-blue-50 w-full">
 				<FadeInSection>
 					<div className="max-w-4xl mx-auto">
-						<h2 className="text-xl md:text-2xl font-serif italic text-black text-center mb-4">
+						<h2 className="text-xl md:text-2xl font-extrabold text-blue-500 text-center mb-4">
 							B:Origin에서 얻을 수 있는 것
 						</h2>
 						<p className="text-center text-xs md:text-sm text-gray-500 mb-10">
@@ -70,10 +70,10 @@ export default function BOriginPage() {
 							{goalItems.map((item) => (
 								<div
 									key={item.id}
-									className="text-center flex flex-col items-center gap-2 px-6 pt-5 pb-6 border-[1px] 
-                border-gray-100 shadow-md rounded-lg bg-white"
+									className="text-center flex flex-col items-center gap-2 px-6 pt-5 pb-6 border-t-4 
+                border-brand-green shadow-md rounded-lg bg-white"
 								>
-									<p className="font-serif italic text-sm md:text-base">
+									<p className="text-2xl font-extrabold text-blue-500">
 										{item.id}
 									</p>
 									<p className="text-base md:text-lg text-gray-700">
@@ -98,7 +98,7 @@ export default function BOriginPage() {
 			{/* Curriculum */}
 			<FadeInSection>
 				<section className="space-y-10 max-w-4xl mx-auto pt-20 md:pt-24 mb-20 md:mb-24 ">
-					<h2 className="text-xl md:text-2xl font-serif italic text-gray-800 text-center mb-4">
+					<h2 className="text-xl md:text-2xl font-extrabold text-blue-500 text-center mb-4">
 						프로그램 커리큘럼
 					</h2>
 					<p className="text-center text-xs md:text-sm text-gray-500 mb-10">
@@ -110,13 +110,13 @@ export default function BOriginPage() {
 								key={item.step}
 								className="text-center flex justify-between items-center py-4"
 							>
-								<p className="text-base md:text-lg font-serif italic text-gray-700">
+								<p className="text-base md:text-lg font-bold text-blue-500">
 									{item.step}
 								</p>
 								<p className="text-base md:text-lg font-semibold text-gray-800">
 									{item.title}
 								</p>
-								<p className="text-xs md:text-sm text-gray-500">
+								<p className="text-xs md:text-sm font-semibold text-blue-500">
 									{item.period}
 								</p>
 							</div>
@@ -128,7 +128,7 @@ export default function BOriginPage() {
 			{/* Schedule */}
 			<FadeInSection>
 				<section className="max-w-4xl mx-auto pt-20 md:pt-24 mb-20 md:mb-24 border-t border-gray-300">
-					<h2 className="text-xl md:text-2xl font-serif italic text-gray-800 text-center mb-4">
+					<h2 className="text-xl md:text-2xl font-extrabold text-blue-500 text-center mb-4">
 						프로그램 일정표
 					</h2>
 					<p className="text-center text-xs md:text-sm text-gray-500 mb-6">
@@ -140,13 +140,13 @@ export default function BOriginPage() {
 								key={item.kor}
 								className="flex flex-col sm:flex-row items-center sm:items-start justify-between py-4"
 							>
-								<p className="w-32 text-sm text-gray-500 font-serif italic">
+								<p className="w-32 text-sm font-semibold text-blue-500">
 									{item.time}
 								</p>
 								<p className="flex-1 text-base font-semibold text-gray-800">
 									{item.kor}
 								</p>
-								<p className="hidden sm:block flex-1 text-right text-sm text-gray-400 font-serif italic">
+								<p className="hidden sm:block flex-1 text-right text-sm text-gray-400">
 									{item.eng}
 								</p>
 							</div>
@@ -161,7 +161,7 @@ export default function BOriginPage() {
 			{/* Program Composition */}
 			<FadeInSection>
 				<section className="text-center max-w-4xl mx-auto py-20 md:py-24 border-t border-gray-300">
-					<h2 className="text-xl md:text-2xl font-serif italic text-gray-800">
+					<h2 className="text-xl md:text-2xl font-extrabold text-blue-500">
 						프로그램 구성
 					</h2>
 					<p className="text-xs md:text-sm text-gray-500 mt-2 mb-14">
@@ -184,7 +184,7 @@ export default function BOriginPage() {
 								</div>
 								<div className="py-2">
 									<p className="text-lg font-semibold">{item.kor}</p>
-									<p className="text-sm text-gray-400 font-serif italic">
+									<p className="text-sm text-gray-400">
 										{item.eng}
 									</p>
 								</div>
@@ -195,9 +195,9 @@ export default function BOriginPage() {
 			</FadeInSection>
 
 			{/* Reviews */}
-			<section className="w-full bg-gray-100 py-20 md:py-24">
+			<section className="w-full bg-blue-50 py-20 md:py-24">
 				<FadeInSection>
-					<h2 className="text-center text-xl md:text-2xl font-serif italic text-black">
+					<h2 className="text-center text-xl md:text-2xl font-extrabold text-blue-500">
 						수강 후기
 					</h2>
 					<p className="text-center text-xs md:text-sm text-gray-500 mt-2 mb-14">
@@ -210,11 +210,11 @@ export default function BOriginPage() {
 								className="flex flex-col justify-center gap-2
                 rounded-lg shadow-md p-6 bg-white"
 							>
-								<p className="text-base md:text-lg font-semibold text-gray-700">
+								<p className="text-base md:text-lg font-bold text-blue-700">
 									{item.title}
 								</p>
-								<p className="text-xs md:text-sm text-gray-400">{item.desc}</p>
-								<p className="text-xs md:text-sm font-light text-gray-400">
+								<p className="text-xs md:text-sm text-gray-600">{item.desc}</p>
+								<p className="text-xs md:text-sm font-light text-gray-500">
 									- {item.reviewer}
 								</p>
 							</div>
@@ -228,8 +228,8 @@ export default function BOriginPage() {
 				<section className="text-center my-16 md:my-20">
 					<button
 						onClick={handleLinkToApply}
-						className="bg-gray-800 text-white text-sm md:text-base font-semibold py-4 px-10
-            rounded-md hover:bg-black transition-colors shadow-lg cursor-pointer"
+						className="bg-blue-600 text-white text-sm md:text-base font-semibold py-4 px-10
+            rounded-md hover:bg-blue-700 transition-colors shadow-lg cursor-pointer"
 					>
 						B:Origin 신청하기
 					</button>

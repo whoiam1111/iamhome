@@ -82,7 +82,7 @@ export default function ProjectPage() {
       <section className="my-8 md:my-12">
         {banners.length > 0 ? (
           <div className="font-bold text-base sm:text-lg mb-4">
-            <span className="text-rose-600 mr-1">NOW</span>
+            <span className="text-blue-600 mr-1">NOW</span>
             <span className="text-gray-600"> 지금 신청 가능한 프로그램</span>
           </div>
         ) : (

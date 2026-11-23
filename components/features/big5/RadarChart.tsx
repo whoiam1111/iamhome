@@ -156,7 +156,7 @@ export default function RadarChart({ scores, primaryTrait }: RadarChartProps) {
 					<polygon
 						points={userPolygonPoints}
 						fill="rgba(59, 130, 246, 0.2)"
-						stroke="#3B82F6"
+						stroke="#1A7BFF"
 						strokeWidth={2}
 						strokeLinejoin="round"
 						className="transition-all duration-700 ease-out"
@@ -169,7 +169,7 @@ export default function RadarChart({ scores, primaryTrait }: RadarChartProps) {
 							cx={pt.x}
 							cy={pt.y}
 							r={3.5}
-							fill="#3B82F6"
+							fill="#1A7BFF"
 							stroke="#FFFFFF"
 							strokeWidth={1.5}
 						/>
