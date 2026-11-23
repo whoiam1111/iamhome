@@ -2,7 +2,7 @@ import React from 'react';
 
 export const metadata = {
     title: '개인정보취급방침 | B:Origin',
-    description: '비라이브(B:Origin)에서 운영하는 비라이브 홈페이지의 개인정보취급방침 페이지입니다.',
+    description: '비오리진(B:Origin)에서 운영하는 비오리진 홈페이지의 개인정보취급방침 페이지입니다.',
 };
 
 export default function TermsPage() {
