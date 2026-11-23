@@ -20,7 +20,7 @@ export default function TeamSection({
         />
       </div>
       <div className="w-3/5 md:w-full mx-auto px-4 flex flex-col items-center gap-2 md:gap-4">
-        <h3 className="text-lg md:text-xl font-serif italic text-gray-800 text-center">
+        <h3 className="text-lg md:text-xl font-extrabold text-blue-500 text-center">
           {title}
         </h3>
         <p className="text-xs md:text-sm text-gray-600 leading-relaxed text-left">

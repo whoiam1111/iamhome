@@ -21,12 +21,12 @@ export default function NavItem({
                 ${
                   isMainPage
                     ? "text-white hover:text-gray-300"
-                    : "text-gray-500 hover:text-black"
+                    : "text-gray-500 hover:text-blue-600"
                 } 
                 `}
     >
       {active ? (
-        <span className="font-semibold underline text-black transition-all duration-300">
+        <span className="font-semibold underline decoration-brand-green decoration-2 underline-offset-4 text-blue-600 transition-all duration-300">
           {label}
         </span>
       ) : (
