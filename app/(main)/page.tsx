@@ -92,7 +92,7 @@ export default function FirstLayer() {
                                 <span>...</span>
                             </p>
                             <p className="font-semibold flex flex-col text-xl tracking-tighter md:text-2xl text-neutral-700">
-                                이런 문제를 경험하고 있다면 B:Origin를 만날 때입니다.
+                                이런 문제를 경험하고 있다면 B:Origin을 만날 때입니다.
                             </p>
                         </div>
                         <div className="w-full md:w-[40%]">
